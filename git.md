@@ -690,6 +690,6 @@ git pull
 
 ### 5.5、删除远程分支
 
-可以使用如下的命令，删除远程仓库中指定的分支：
+可以使用如下的命令，**删除**远程仓库中指定的分支：
 
 ![image-20230301181104852](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301181104852.png)
