@@ -441,9 +441,255 @@ git commit -a -m "描述消息"
 
 # 第四章、GitHub
 
-如果代码已经提交到github上，第二次无需执行GitHub上面的命令，只需输入git push，就可以将新增内容同步到GitHub上
+## 1、了解开源相关的概念
+
+### 1.1、开源协议
+
+开源并不意味着完全没有限制，为了限制使用者的使用范围和保护作者的权利，每个开源项目都应该遵守开源许可协议（ Open Source License ）。
+
+### 1.2、常见开源协议
+
+① BSD（Berkeley Software Distribution）
+
+② Apache Licence 2.0
+
+③ **GPL**（GNU General Public License）
+
++  具有传染性的一种开源协议，不允许修改后和衍生的代码做为闭源的商业软件发布和销售
+
++ 使用 GPL 的最著名的软件项目是：Linux
+
+④ LGPL（GNU Lesser General Public License）
+
+⑤ **MIT**（Massachusetts Institute of Technology, MIT）
+
++ 是目前限制最少的协议，唯一的条件：在修改后的代码或者发行包中，必须包含原作者的许可信息
+
++  使用 MIT 的软件项目有：jquery、Node.js
+
+关于更多开源许可协议的介绍，可以参考博客 https://www.runoob.com/w3cnote/open-source-license.html
+
+### 1.3、开源项目托管平台
+
+专门用于免费存放开源项目源代码的网站，叫做**开源项目托管平台**。目前世界上比较出名的开源项目托管平台
+
+主要有以下 3 个：
+
++ Github（全球最牛的开源项目托管平台，没有之一）
+
++ Gitlab（对代码私有性支持较好，因此企业用户较多）
+
++ Gitee（又叫做码云，是国产的开源项目托管平台。访问速度快、纯中文界面、使用友好）
+
+注意：以上 3 个开源项目托管平台，只能托管以 Git 管理的项目源代码，因此，它们的名字都以 Git 开头。
+
+## 2、远程仓库的使用
+
+Github 上的远程仓库，有两种访问方式，分别是 HTTPS 和 SSH。它们的区别是：
+
+① HTTPS：**零配置**；但是每次访问仓库时，需要重复输入 Github 的账号和密码才能访问成功
+
+② SSH：**需要进行额外的配置**；但是配置成功后，每次访问仓库时，不需重复输入 Github 的账号和密码
+
+注意：在实际开发中，**推荐使用 SSH 的方式访问远程仓库**。
+
+## 3、 基于 HTTPS 将本地仓库上传到 Github
+
+![image-20230301110050685](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301110050685.png)
+
+**注意：**
+
+**如果代码已经提交到github上，第二次无需执行GitHub上面的命令，只需输入git push，就可以将新增内容同步到GitHub上**
 
 ```
 git push
 ```
 
+
+
+## 4、基于SSH将本地仓库上传到Github
+
+### 4.1、SSH key
+
+SSH key 的**作用**：实现本地仓库和 Github 之间免登录的加密数据传输。
+
+SSH key 的**好处**：免登录身份认证、数据加密传输。
+
+SSH key 由**两部分组成**，分别是：
+
+① id_rsa（私钥文件，存放于客户端的电脑中即可）
+
+② id_rsa.pub（公钥文件，需要配置到 Github 中）
+
+### 4.2、生成SSH key 
+
+① 打开 Git Bash
+
+② 粘贴如下的命令，并将 your_email@example.com 替换为注册 Github 账号时填写的邮箱：
+
++ ==ssh-keygen -t rsa -b 4096 -C "your_email@example.com"==
+
+③ 连续敲击 3 次回车，即可在 C:\Users\用户名文件夹\.ssh 目录中生成 id_rsa 和 id_rsa.pub 两个文件
+
+### 4.3、配置SSH key
+
+① 使用记事本打开 **id_rsa.pub** 文件，复制里面的文本内容
+
+② 在浏览器中登录 Github，**点击头像 -> Settings -> SSH and GPG Keys -> New SSH key**
+
+③ 将 id_rsa.pub 文件中的内容，**粘贴到 Key 对应的文本框中**
+
+④ 在 Title 文本框中任意填写一个名称，来标识这个 Key 从何而来
+
+### 4.4、检测Github的SSH key是否配置成功
+
+打开 Git Bash，输入如下的命令并回车执行：
+
+```
+ssh -T git@github.com
+```
+
+![image-20230301111935995](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301111935995.png)
+
+### 4.5、基于SSH将本地仓库上传到Github
+
+![image-20230301113727450](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301113727450.png)
+
+### 4.6、查看远程仓库的地址及名称
+
+```
+git remote -v
+```
+
+![f0c6876c9467d88ba9598badda34a28.png](https://img.php.cn//upload/image/837/762/235/1542873960467772.png)
+
+### 4.7、将本地仓库克隆到本地
+
+打开 Git Bash，输入如下的命令并回车执行：
+
+```
+git clone 远程仓库的地址
+```
+
+# 第五章、git分支
+
+## 1、分支在实际开发中的作用
+
+在进行多人协作开发的时候，为了防止互相干扰，提高协同开发的体验，建议每个开发者都基于分支进行项目功能的开发
+
+## 2、master分支
+
+在初始化本地 Git 仓库的时候，Git 默认已经帮我们创建了一个名字叫做 master 的分支。通常我们把这个master 分支叫做**主分支**。
+
+在实际工作中，master 主分支的作用是：**用来保存和记录整个项目已完成的功能代码**。
+
+因此，不允许程序员直接在 master 分支上修改代码，因为这样做的风险太高，容易导致整个项目崩溃。
+
+## 3、功能分支
+
+由于程序员不能直接在 master 分支上进行功能的开发，所以就有了功能分支的概念。
+
+**功能分支**指的是专门用来开发新功能的分支，它是临时从 master 主分支上分叉出来的，当新功能开发且测试完毕后，最终需要合并到 master 主分支上。
+
+![image-20230301115253987](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301115253987.png)
+
+## 4.本地分支操作
+
+### 2.1、查看分支列表
+
+使用如下的命令，可以查看当前 Git 仓库中所有的分支列表：
+
+```
+git branch
+```
+
+![image-20230301115340965](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301115340965.png)
+
+==注意：分支名字前面的 ***** 号表示当前所处的分支。==
+
+### 2.2、创建新分支
+
+使用如下的命令，可以**基于当前分支，创建一个新的分支**，此时，新分支中的代码和当前分支完全一样：
+
+```
+git branch 分支名称
+```
+
+### 2.3、切换分支
+
+使用如下的命令，**可以切换到指定的分支上**进行开发：
+
+```
+git checkout 分支名称（login）
+```
+
+### 2.4、分支的快速创建和切换
+
+使用如下的命令，可以**创建指定名称的新分支，**并立即**切换到新分支上**：
+
+![image-20230301175405314](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301175405314.png)
+
+### 2.5、合并分支
+
+功能分支的代码开发测试完毕之后，可以使用如下的命令，将完成后的代码合并到 master 主分支上：
+
+![image-20230301175510510](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301175510510.png)
+
+==合并分支时的注意点：==
+
+假设要把 C 分支的代码合并到 A 分支，
+
+则必须**先切换到 A 分支**上，**再运行 git** 
+
+**merge 命令**，来合并 C 分支！
+
+### 2.6、删除分支
+
+当把功能分支的代码合并到 master 主分支上以后，就可以使用如下的命令，删除对应的功能分支：
+
+```
+git branch -d 分支名称
+```
+
+### 2.7、遇到冲突时的分支冲突
+
+如果**在两个不同的分支中，对同一个文件进行了不同的修改**，Git 就没法干净的合并它们。 此时，我们需要打开这些包含冲突的文件然后**手动解决冲突**。
+
+![image-20230301175914245](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301175914245.png)
+
+## 5、远程分支操作
+
+### 5.1、将本地分支推送到远程仓库
+
+如果是**第一次**将本地分支推送到远程仓库，需要运行如下的命令：
+
+![image-20230301180311403](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301180311403.png)
+
+### 5.2、查看远程仓库中所有的分支列表
+
+通过如下的命令，可以查看远程仓库中，所有的分支列表的信息：
+
+```
+git remote show 远程仓库名称
+```
+
+### 5.3、跟踪分支
+
+跟踪分支指的是：从远程仓库中，把远程分支下载到本地仓库中。需要运行的命令如下：
+
+![image-20230301180558596](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301180558596.png)
+
+### 5.4、拉取远程分支的最新的代码
+
+可以使用如下的命令，把远程分支最新的代码下载到本地对应的分支中：
+
+```
+#从远程仓库，拉取分支最新的代码，保持当前分支的代码和远程分支代码一致
+git pull
+```
+
+### 5.5、删除远程分支
+
+可以使用如下的命令，删除远程仓库中指定的分支：
+
+![image-20230301181104852](C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230301181104852.png)
