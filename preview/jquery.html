@@ -1,0 +1,959 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h2 id="-jquery-">一、jQuery入门</h2>
+<h2 id="1-">1.概述</h2>
+<ul>
+<li><p>JavaScript库,为了快速方便的操作 DOM，里面基本都是函数(方法）。</p>
+</li>
+<li><p><strong>jQuery 封装了 JavaScript 常用的功能代码</strong>，优化了 DOM 操作、事件处理、动画设计和 Ajax 交互。</p>
+</li>
+</ul>
+<p>常见的 JavaScript 库：</p>
+<ul>
+<li>jQuery</li>
+<li>Prototype</li>
+<li>YuI</li>
+<li>Dojo</li>
+<li>Ext JS</li>
+<li>移动端的zepto</li>
+</ul>
+<p>这些库都是对原生JavaScript的封装，<strong>内部都是用 JavaScript 实现的</strong>，我们主要学习的是jQuery。</p>
+<p>==优点==</p>
+<ul>
+<li>轻量级。核心文件才几十kb，不会影响页面加载速度</li>
+<li>跨浏览器兼容。基本兼容了现在主流的浏览器</li>
+<li>链式编程、隐式迭代</li>
+<li>对事件、样式、动画支持，人大简化了 DOM 操作</li>
+<li>支持插件扩展开发。有着丰富的第三方的插件，例：树形菜单、日期控件、轮播图等</li>
+<li>免费、开源</li>
+</ul>
+<h2 id="2-">2、基本使用</h2>
+<h3 id="2-1-">2.1、下载</h3>
+<p>官网：<a href="https://jquery.com/">https://jquery.com</a></p>
+<h3 id="2-2-jquery-">2.2 jQuery 的入口函数</h3>
+<p>方式一：（主要）</p>
+<pre><code class="lang-js">$(function () {
+    // 此处是页面DOM加载完成的入口
+});
+</code></pre>
+<p>方式二</p>
+<pre><code class="lang-js">$(document).ready(function () {
+    // 此处是页面DOM加载完成的入口
+});
+</code></pre>
+<ul>
+<li>等着 DOM 结构渲染完毕即可执行内部代码，不必等到所有外部资源加载完成，jQuery 帮我们完成了封装。</li>
+<li>相当于原生 js 中的 <code>DOMContentLoaded</code>。</li>
+<li>不同于原生 js 中的 <code>load</code> 事件是等页面文档、外部的js文件、css文件、图片加载完毕才执行内部代码。</li>
+<li>更推荐使用第一种方式。</li>
+</ul>
+<h3 id="2-3-jquery-">2.3 jQuery 的顶级对象 $</h3>
+<ul>
+<li><code>$</code> 是jQuery的别称，在代码中可以使用jQuery代替 <code>$</code>，但一般为了方便，通常都直接使用 <code>$</code>。</li>
+<li><code>$</code> 是jQuery的顶级对象，相当于原生 JavaScript 中的 <code>window</code>。把元素利用 <code>$</code> 包装成jQuery对象，就可以调用jQuery的方法。</li>
+</ul>
+<h3 id="2-4-jquery-dom-">2.4 jQuery 对象和 DOM 对象</h3>
+<h4 id="2-4-1-">2.4.1 对比</h4>
+<ul>
+<li>用原生 JS 获取来的对象就是 DOM 对象</li>
+<li>jQuery 方法获取的元素就是 jQuery 对象</li>
+<li>jQuery 对象本质：通过 <code>$</code> 把 DOM 元素进行了包装，返回的形式是 <strong>伪数组形式</strong>。</li>
+<li>jQuery 对象只能使用 jQuery 方法，DOM 对象则使用原生的 JavaScirpt 属性和方法</li>
+<li>DOM 对象不能使用 jQuery 里面的 <code>hide</code> 等方法，jQuery 对象不能使用原生 JS 的属性和方法</li>
+</ul>
+<h4 id="2-4-2-">2.4.2 联系</h4>
+<p>DOM 对象与 jQuery 对象之间是可以相互转换的。</p>
+<p>因为原生 js 比 jQuery 更大，原生的一些属性和方法 jQuery 没有给我们封装。<strong>要想使用这些属性和方法需要把 jQuery 对象转换为 DOM 对象</strong>。DOM 对象转换为 jQuery 对象直接使用 <code>$(DOM对象)</code>；<strong>jQuery 对象是一种伪数组的形式，可通过索引转换为 DOM 对象</strong>。</p>
+<ul>
+<li><p>DOM对象转换为 jQuery 对象：<code>$(DOM对象)</code></p>
+<pre><code class="lang-js">//(1)
+$(&#39;div‘)
+//(2)
+var mydiv=document.querySelector(&#39;div&#39;)
+$(mydiv)
+</code></pre>
+</li>
+<li><p>jQuery 对象转换为 DOM 对象：</p>
+<pre><code class="lang-js">$(DOM对象)[index]
+</code></pre>
+<pre><code class="lang-js">$(DOM对象).get(index)
+</code></pre>
+</li>
+</ul>
+<h1 id="-jquery-api">二、jquery常用API</h1>
+<h2 id="1-jquery-">1. jQuery 选择器</h2>
+<h3 id="1-1-jquery-">1.1 jQuery 基础选择器</h3>
+<p>原生 JS 获取元素方式很多，很杂，而且兼容性情况不一致，因此 jQuery 给我们做了封装，使获取元素统一标准。</p>
+<pre><code class="lang-js">$(&#39;选择器&#39;）//里面选择器直接写CSS选择器即可，但是要加引号Copy to clipboardErrorCopied
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID 选择器</td>
+<td><code>$(&#39;#id&#39;)</code></td>
+<td>获取指定 ID 的元素</td>
+</tr>
+<tr>
+<td>全选选择器</td>
+<td><code>$(&#39;*&#39;)</code></td>
+<td>匹配所有元素</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td><code>$(&#39;.class&#39;)</code></td>
+<td>获取同一类 class 的元素</td>
+</tr>
+<tr>
+<td>标签选择器</td>
+<td><code>$(&#39;div&#39;)</code></td>
+<td>获取同一类标签的所有元素</td>
+</tr>
+<tr>
+<td>并集选择器</td>
+<td><code>$(&#39;div,p,li&#39;)</code></td>
+<td>选取多个元素</td>
+</tr>
+<tr>
+<td>交集选择器</td>
+<td><code>$(&#39;li.current&#39;)</code></td>
+<td>交集元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-jquery-">1.2 jQuery 层级选择器</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子代选择器</td>
+<td><code>$(&#39;ul&gt;li&#39;)</code></td>
+<td>使用 <code>&gt;</code> 号，获取亲儿子层级的元素；注意，并不会获取孙子层级的元素</td>
+</tr>
+<tr>
+<td>后代选择器</td>
+<td><code>$(&#39;ul li&#39;)</code></td>
+<td>使用空格，代表后代选择器，获取 <code>ul</code> 下的所有 <code>li</code> 元素，包括孙子等</td>
+</tr>
+</tbody>
+</table>
+<p>Tip</p>
+<p>jQuery 设置样式：<code>$(&#39;div).css(&#39;属性&#39;,&#39;值&#39;)</code></p>
+<h3 id="1-3-">1.3 隐式迭代（重要）</h3>
+<p>遍历内部 DOM 元素（伪数组形式存储）的过程就叫做 <strong>隐式迭代</strong>。 简单理解：给匹配到的所有元素进行循环遍历，执行相应的方法，而不用我们再进行循环，简化我们的操作，方便我们调用。</p>
+<pre><code class="lang-html">&lt;div&gt;
+    &lt;div&gt;1&lt;/div&gt;
+    &lt;div&gt;2&lt;/div&gt;
+    &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    $(&#39;div div&#39;).css(&#39;color&#39;, &#39;red&#39;);
+&lt;/script&gt;
+</code></pre>
+<h3 id="1-4-jquery-">1.4 jQuery 筛选选择器</h3>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:first</code></td>
+<td><code>$(&#39;li:first&#39;)</code></td>
+<td>获取第一个 <code>li</code> 元素</td>
+</tr>
+<tr>
+<td><code>:last</code></td>
+<td><code>$(&#39;li:last&#39;)</code></td>
+<td>获取最后一个 <code>li</code> 元素</td>
+</tr>
+<tr>
+<td><code>:eq(index)</code></td>
+<td><code>$(&#39;li:eq(2)&#39;)</code></td>
+<td>获取到的 <code>li</code> 元素中，选择索引号为 2 的元素，索引号 <code>index</code> 从 0 开始。</td>
+</tr>
+<tr>
+<td><code>:odd</code></td>
+<td><code>$(&#39;li:odd&#39;)</code></td>
+<td>获取到的 <code>li</code> 元素中，选择索引号为奇数的元素</td>
+</tr>
+<tr>
+<td><code>:even</code></td>
+<td><code>$(&#39;li:even&#39;)</code></td>
+<td>获取到的 <code>li</code> 元素中，选择索引号为偶数的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-5-jquery-">1.5 jQuery 父子兄筛选方法（重点）</h3>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parent()</code></td>
+<td><code>$(&#39;li&#39;).parent();</code></td>
+<td>查找父级</td>
+</tr>
+<tr>
+<td><code>children(selector)</code></td>
+<td><code>$(&#39;ul&#39;).children(&#39;li&#39;)</code></td>
+<td>相当于 <code>$(&#39;ul&gt;li&#39;)</code>，最近一级(亲儿子)</td>
+</tr>
+<tr>
+<td><code>find(selector)</code></td>
+<td><code>$(&#39;ul&#39;).find(&#39;li&#39;);</code></td>
+<td>相当于 <code>$(&#39;ul li&#39;)</code>，后代选择器</td>
+</tr>
+<tr>
+<td><code>siblings(selector)</code></td>
+<td><code>$(&#39;.first&#39;).siblings(&#39;li&#39;);</code></td>
+<td>查找兄弟节点，不包括自己本身</td>
+</tr>
+<tr>
+<td><code>nextAll([expr])</code></td>
+<td><code>$(&#39;.first&#39;).nextAll()</code></td>
+<td>查找当前元素之后所有的同辈元素</td>
+</tr>
+<tr>
+<td><code>prevtAll([expr])</code></td>
+<td><code>$(&#39;.last&#39;).prevAll()</code></td>
+<td>查找当前元素之前所有的同辈元素</td>
+</tr>
+<tr>
+<td><code>hasClass(class)</code></td>
+<td><code>$(&#39;div&#39;).hasClass(&#39;protected&#39;)</code></td>
+<td>检查当前的元素是否含有某个特定的类，如 果有，则返回 <code>true</code></td>
+</tr>
+<tr>
+<td><code>eq(index)</code></td>
+<td><code>$(&#39;li&#39;).eq(2);</code></td>
+<td>相当于 <code>$(&#39;li:eq(2)&#39; )</code>，index从 <code>0</code> 开始</td>
+</tr>
+<tr>
+<td><code>parents()</code></td>
+<td><code>$(&#39;div&#39;).parents(&#39;.one&#39;);</code></td>
+<td>获取元素所有父级，然后指定其中一个父级</td>
+</tr>
+</tbody>
+</table>
+<p>重点记住：<code>parent()</code>、<code>children()</code>、<code>find()</code>、<code>siblings()</code>、<code>eq()</code></p>
+<h3 id="1-6-jquery-">1.6 jQuery 里面的排他思想</h3>
+<p>想要多选一的效果，排他思想：当前元素（<code>$(this)</code>）设置样式，其余的兄弟元素（<code>$(this).siblings()</code>）清除样式。</p>
+<pre><code class="lang-js">$(&#39;button&#39;).mouseover(function () {
+    // 设置自己的属性
+    $(this).css(&#39;background-color&#39;, &#39;pink&#39;)
+    // 消灭其他元素的属性
+    $(this).siblings().css(&#39;background-color&#39;, &#39;&#39;);
+})
+</code></pre>
+<h3 id="1-7-jquery-">1.7 jQuery 链式编程</h3>
+<p>链式编程是为了节省代码量，看起来更优雅。</p>
+<pre><code class="lang-js">$(&#39;button&#39;).mouseover(function () {
+    // 先设置自己的属性，然后消灭其他兄弟的属性
+    $(this).css(&#39;background-color&#39;, &#39;pink&#39;).siblings().css(&#39;background-color&#39;, &#39;&#39;);
+})
+</code></pre>
+<h4 id="1-7-1-tab-">1.7.1 tab栏切换</h4>
+<pre><code class="lang-js">// 获取所点击的 tab 的 index，使用 index() 方法
+let index = $(this).index();
+// 使用 eq() 方法设置相应的模块展示，而隐藏其他兄弟节点
+$(&#39;#content div&#39;).eq(index).show().siblings().hide();
+</code></pre>
+<h2 id="2-jquery-">2. jQuery 样式操作</h2>
+<h3 id="2-1-css-">2.1 操作 CSS 方法</h3>
+<p>jQuery 可以使用 CSS 方法来修改简单元素样式； 也可以操作类，修改多个样式。</p>
+<ol>
+<li>参数只写属性名，则是返回属性值。</li>
+</ol>
+<pre><code class="lang-js">$(this).css(&#39;color&#39;);
+</code></pre>
+<ol>
+<li>参数是 <strong>属性名，属性值，逗号分隔</strong>，是设置一组样式，属性必须加引号，值如果是数字可以不用跟单位和引号。</li>
+</ol>
+<pre><code class="lang-js">$(this).css(&#39;color&#39;, &#39;red&#39;);
+</code></pre>
+<ol>
+<li>参数可以是对象形式，方便设置多组样式。属性名和属性值用冒号隔开， 属性可以不用加引号。</li>
+</ol>
+<pre><code class="lang-js">$(this).css({ &#39;color&#39;:&#39;white&#39;,&#39;font-size&#39;:&#39;20px&#39;});
+</code></pre>
+<h3 id="2-2-">2.2 设置类样式方法</h3>
+<p>作用等同于以前的 <code>classList</code>，可以操作类样式， 注意 <strong>操作类里面的参数不要加点</strong>。</p>
+<ol>
+<li>添加类</li>
+</ol>
+<pre><code class="lang-js">$(&#39;div&#39;).addClass(&#39;current&#39;);
+</code></pre>
+<ol>
+<li>移除类</li>
+</ol>
+<pre><code class="lang-js">$(&#39;div&#39;).removeClass(&#39;current&#39;);
+</code></pre>
+<ol>
+<li>切换类</li>
+</ol>
+<pre><code class="lang-js">$(&#39;div&#39;).toggleClass(&#39;current&#39;);
+</code></pre>
+<h3 id="2-3-classname-">2.3 类操作与 className 区别</h3>
+<ul>
+<li>原生 JS 中 <code>className</code> 会覆盖元素原先里面的类名。</li>
+<li>jQuery 里面类操作 <strong>只是对指定类进行操作，不影响原先的类名</strong>。</li>
+</ul>
+<h2 id="3-jquery-">3. jQuery 效果</h2>
+<h3 id="3-1-">3.1 显示/隐藏效果</h3>
+<h4 id="3-1-1-">3.1.1 显示语法</h4>
+<ol>
+<li>显示语法规范</li>
+</ol>
+<pre><code class="lang-js">show([speed, [easing], [fn]])
+</code></pre>
+<ol>
+<li><p>显示参数</p>
+</li>
+<li><p>参数都可以省略， 无动画直接显示。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>, <code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：(Optional) 用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h4 id="3-1-2-">3.1.2 隐藏语法</h4>
+<ol>
+<li>隐藏语法规范</li>
+</ol>
+<pre><code class="lang-js">hide([speed, [easing], [fn]])
+</code></pre>
+<ol>
+<li><p>隐藏参数</p>
+</li>
+<li><p>参数都可以省略， 无动画直接显示。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>, <code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：(Optional) 用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h4 id="3-1-3-">3.1.3 切换语法</h4>
+<ol>
+<li>切换语法规范</li>
+</ol>
+<pre><code class="lang-js">toggle([speed, [easing], [fn]])
+</code></pre>
+<ol>
+<li><p>切换参数</p>
+</li>
+<li><p>参数都可以省略，无动画直接显示。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>, <code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：(Optional) 用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<p>Tip</p>
+<p>建议：平时一般不带参数，直接显示隐藏即可。</p>
+<h3 id="3-2-">3.2 滑动效果</h3>
+<h4 id="3-2-1-">3.2.1 下滑效果语法</h4>
+<ol>
+<li>下滑效果语法规范</li>
+</ol>
+<pre><code class="lang-js">slideDown([speed,[easing],[fn]])
+</code></pre>
+<ol>
+<li><p>下滑效果参数</p>
+</li>
+<li><p>参数都可以省略，无动画直接显示。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>, <code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：(Optional) 用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h4 id="3-2-2-">3.2.2 上滑效果语法</h4>
+<ol>
+<li>上滑效果语法规范</li>
+</ol>
+<pre><code class="lang-js">slideUp([speed,[easing],[fn]])
+</code></pre>
+<ol>
+<li><p>上滑效果参数</p>
+</li>
+<li><p>参数都可以省略，无动画直接显示。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>, <code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：(Optional) 用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h4 id="3-2-3-">3.2.3 滑动切换效果语法</h4>
+<ol>
+<li>下滑效果语法规范</li>
+</ol>
+<pre><code class="lang-js">slideToggle([speed,[easing],[fn]])
+</code></pre>
+<ol>
+<li><p>下滑效果参数</p>
+</li>
+<li><p>参数都可以省略，无动画直接显示。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>, <code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：(Optional) 用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h3 id="3-3-">3.3 事件切换</h3>
+<pre><code class="lang-js">hover([over,] out)
+</code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>over</code>：鼠标移到元素上要触发的函数（相当于 <code>mouseenter</code>）</li>
+<li><code>out</code>：鼠标移出元素要触发的函数（相当于 <code>mouseleave</code>）</li>
+<li><strong>如果只写一个函数，则鼠标经过和离开都会触发它</strong></li>
+</ul>
+<p>举例：</p>
+<pre><code class="lang-js">$(&#39;.nav&gt;li&#39;).hover(function () {
+    $(this).children(&#39;ul&#39;).stop().slideToggle(&#39;fast&#39;);
+})
+</code></pre>
+<h3 id="3-4-">3.4 动画队列及其停止排队方法</h3>
+<h4 id="3-4-1-">3.4.1 动画或效果队列</h4>
+<p>动画或者效果一旦触发就会执行，如果多次触发，就造成多个动画或者效果排队执行。</p>
+<h4 id="3-4-2-">3.4.2 停止排队</h4>
+<pre><code class="lang-js">stop()Copy to clipboardErrorCopied
+</code></pre>
+<ul>
+<li><code>stop()</code> 方法用于停止动画或效果。</li>
+<li>注意：<code>stop()</code> 写到动画或者效果的 <strong>前面， 相当于停止结束上一次的动画</strong>。</li>
+</ul>
+<h3 id="3-5-">3.5 淡入淡出效果</h3>
+<h4 id="3-5-1-">3.5.1 淡入效果</h4>
+<ol>
+<li>淡入效果语法规范</li>
+</ol>
+<pre><code class="lang-js">fadeIn([speed,[easing],[fn]])
+</code></pre>
+<ol>
+<li><p>淡入效果参数</p>
+</li>
+<li><p>参数都可以省略。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串(<code>&#39;slow&#39;</code>,<code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>)或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：（Optional）用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h4 id="3-5-2-">3.5.2 淡出效果</h4>
+<ol>
+<li>淡出效果语法规范</li>
+</ol>
+<pre><code class="lang-js">fadeOut([speed,[easing],[fn]])
+</code></pre>
+<ol>
+<li><p>淡出效果参数</p>
+</li>
+<li><p>参数都可以省略。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串(<code>&#39;slow&#39;</code>,<code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>)或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：（Optional）用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h4 id="3-5-3-">3.5.3 淡入淡出切换效果</h4>
+<ol>
+<li>淡入淡出切换效果语法规范</li>
+</ol>
+<pre><code class="lang-js">fadeToggle([speed,[easing],[fn]])
+</code></pre>
+<ol>
+<li><p>淡入淡出切换效果参数</p>
+</li>
+<li><p>参数都可以省略。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串(<code>&#39;slow&#39;</code>,<code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>)或表示动画时长的毫秒数值(如：1000)。</li>
+<li><code>easing</code>：（Optional）用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ol>
+<h4 id="3-5-4-">3.5.4 渐进方式调整到指定的不透明度</h4>
+<ol>
+<li>语法</li>
+</ol>
+<pre><code class="lang-js">fadeTo([[speed],opacity,[easing],[fn]])
+</code></pre>
+<ol>
+<li><p>参数</p>
+</li>
+<li><p><code>opacity</code>：<strong>透明度必须写，取值 0~1 之间</strong>。</p>
+</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>,<code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值(如：1000)，<strong>必须</strong>。</li>
+<li><code>easing</code>：（Optional）用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><p><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+</li>
+<li><p>案例：图片高亮突出显示</p>
+</li>
+</ol>
+<pre><code class="lang-js">$(&#39;.wrap li&#39;).hover(function () {
+    $(this).siblings().stop().fadeTo(400, .5);
+}, function () {
+    $(this).siblings().stop().fadeTo(400, 1);
+});
+</code></pre>
+<h3 id="3-6-animate">3.6 自定义动画 animate</h3>
+<h4 id="3-6-1-">3.6.1 语法</h4>
+<pre><code class="lang-js">animate(params,[speed],[easing],[fn])
+</code></pre>
+<h4 id="3-6-2-">3.6.2 参数</h4>
+<ul>
+<li><code>params</code>: 想要更改的样式属性，以对象形式传递，必须写。 属性名可以不用带引号， 如果是复合属性则需要采取驼峰命名法 borderLeft。其余参数都可以省略。</li>
+<li><code>speed</code>：三种预定速度之一的字符串（<code>&#39;slow&#39;</code>,<code>&#39;normal&#39;</code>, or <code>&#39;fast&#39;</code>）或表示动画时长的毫秒数值（如：1000）</li>
+<li><code>easing</code>：（Optional）用来指定切换效果，默认是 <code>&#39;swing&#39;</code>，可用参数 <code>&#39;linear&#39;</code>。</li>
+<li><code>fn</code>: 回调函数，在动画完成时执行的函数，每个元素执行一次。</li>
+</ul>
+<h2 id="4-jquery-">4. jQuery 属性操作</h2>
+<h3 id="4-1-prop-">4.1 设置或获取元素固有属性值 <code>prop()</code></h3>
+<p>所谓元素固有属性就是元素本身自带的属性，比如 <code>&lt;a&gt;</code> 元素里面的 <code>href</code>，比如 <code>&lt;input&gt;</code> 元素里面的 <code>type</code>。</p>
+<ol>
+<li>获取属性语法</li>
+</ol>
+<pre><code class="lang-js">prop(&#39;属性&#39;)
+</code></pre>
+<ol>
+<li>设置属性语法</li>
+</ol>
+<pre><code class="lang-js">prop(&#39;属性&#39;, &#39;属性值&#39;)
+</code></pre>
+<h3 id="4-2-attr-">4.2 设置或获取元素自定义属性值 <code>attr()</code></h3>
+<p>用户自己给元素添加的属性，我们称为自定义属性。 比如给 <code>div</code> 添加 <code>index =&#39;1&#39;</code>。</p>
+<ol>
+<li>获取属性语法</li>
+</ol>
+<pre><code class="lang-js">attr(&#39;属性&#39;) // 类似原生 getAttribute()
+</code></pre>
+<ol>
+<li>设置属性语法</li>
+</ol>
+<pre><code class="lang-js">attr(&#39;属性&#39;, &#39;属性值&#39;) // 类似原生 setAttribute()
+</code></pre>
+<p>改方法也可以获取 H5 自定义属性</p>
+<h3 id="4-3-data-">4.3 数据缓存 <code>data()</code></h3>
+<p><code>data()</code> 方法可以在指定的元素上存取数据，并不会修改 DOM 元素结构。一旦页面刷新，之前存放的数据都将被移除。</p>
+<ol>
+<li>附加数据语法</li>
+</ol>
+<pre><code class="lang-js">data(&#39;name&#39;,&#39;value&#39;) // 向被选元素附加数据  
+</code></pre>
+<ol>
+<li>获取数据语法</li>
+</ol>
+<pre><code class="lang-js">date(&#39;name&#39;) // 向被选元素获取数据  
+</code></pre>
+<p>同时，还可以读取 HTML5 自定义属性 <code>data-index</code> ，得到的是数字型。</p>
+<h2 id="5-jquery-">5. jQuery 文本属性值</h2>
+<p>主要针对 <strong>元素的内容还有表单的值操作</strong>。</p>
+<h3 id="5-1-html-">5.1 普通元素内容 html()</h3>
+<p>相当于原生 <code>innerHTML</code>。</p>
+<pre><code class="lang-js">html() // 获取元素的内容
+html(&#39;内容&#39;) // 设置元素的内容
+</code></pre>
+<h3 id="5-2-text-">5.2 普通元素文本内容 text()</h3>
+<p>相当与原生 <code>innerText</code>。</p>
+<pre><code class="lang-js">text() // 获取元素的文本内容
+text(&#39;内容&#39;) // 设置元素的文本内容
+</code></pre>
+<h3 id="5-3-val-">5.3 表单的值 val()</h3>
+<p>相当于原生 <code>value</code>。</p>
+<pre><code class="lang-js">val() // 获取表单的值
+val(&#39;内容&#39;) // 设置表单的值
+</code></pre>
+<h2 id="6-jquery-">6. jQuery 元素操作</h2>
+<p>主要是遍历、创建、添加、删除元素操作。</p>
+<h3 id="6-1-">6.1 遍历元素</h3>
+<p>jQuery 隐式迭代是对同一类元素做了同样的操作。 如果想要 <strong>给同一类元素做不同操作，就需要用到遍历</strong>。</p>
+<p>\1. <code>$(&#39;div&#39;).each()</code></p>
+<pre><code class="lang-js">$(&quot;div&quot;).each(function (index, domElem) {
+    $(domElem);
+});
+</code></pre>
+<ul>
+<li><code>each()</code> 方法遍历匹配的每一个元素。主要用 DOM 处理。 <code>each</code> 每一个。</li>
+<li>里面的回调函数有 2 个参数：index 是每个元素的索引号；<code>demElem</code> 是每个DOM元素对象，不是jquery对象</li>
+<li>所以要想使用 jquery 方法，需要给这个 <code>dom</code> 元素转换为 jquery 对象：<code>$(domElem)</code></li>
+</ul>
+<p>\2. <code>$(&#39;div&#39;).each()</code></p>
+<pre><code class="lang-js">$.each(object，function (index, element) { })
+</code></pre>
+<ul>
+<li><code>$.each()</code> 方法可用于遍历任何对象。主要用于数据处理，比如数组，对象</li>
+<li>里面的函数有 2 个参数：<code>index</code> 是每个元素的索引号； <code>element</code> 遍历内容。</li>
+</ul>
+<p>其中，<code>object</code> 对象可以是 DOM 对象，数组，一般对象等。</p>
+<p>（1）当 <code>object</code> 为 DOM 对象：</p>
+<pre><code class="lang-js">$.each($(&#39;li&#39;), function (i, domElem) {
+    $(domElem); // 转换为 jQuery 对象
+})
+</code></pre>
+<p>（2）当 <code>object</code> 为数组：</p>
+<pre><code class="lang-js">$.each(arr, function(inbdex, value) {
+    // arr 为原数组
+    // index 为当前索引
+    // value 为当前数组值
+})
+</code></pre>
+<p>（3）当 <code>object</code> 为一般对象：</p>
+<pre><code class="lang-js">$.each(obj, function(key, value) {
+    console.log(key, value);
+    // obj: 对象
+    // key: 对象的键
+    // value: 对象的值
+})
+</code></pre>
+<h3 id="6-2-">6.2 创建元素</h3>
+<p>动态的创建了一个 <code>&lt;li&gt;</code>。</p>
+<pre><code class="lang-js">$(&#39;&lt;li&gt;&lt;/li&gt;&#39;);
+</code></pre>
+<h3 id="6-3-">6.3 添加元素</h3>
+<p>\1. 内部添加</p>
+<p>把内容放入匹配元素内部最后面，类似原生 <code>appendChild</code>。</p>
+<pre><code class="lang-js">element.append(&#39;内容&#39;)
+</code></pre>
+<p>把内容放入匹配元素内部最前面。</p>
+<pre><code class="lang-js">element.prepend(&#39;内容&#39;)
+</code></pre>
+<p>\2. 外部添加</p>
+<p>把内容放入目标元素后面</p>
+<pre><code class="lang-js">element.after(&#39;内容&#39;)
+</code></pre>
+<p>把内容放入目标元素前面</p>
+<pre><code class="lang-js">element.before(&#39;内容&#39;)
+</code></pre>
+<ul>
+<li><strong>内部添加元素，生成之后，它们是父子关系。</strong></li>
+<li><strong>外部添加元素，生成之后，他们是兄弟关系。</strong></li>
+</ul>
+<h3 id="6-4-">6.4 删除元素</h3>
+<p>删除匹配的元素（本身）</p>
+<pre><code class="lang-js">element.remove()
+</code></pre>
+<p>删除匹配的元素集合中所有的子节点</p>
+<pre><code class="lang-js">element.empty()
+</code></pre>
+<p>清空匹配的元素内容</p>
+<pre><code class="lang-js">element.html(&#39;div&#39;)
+</code></pre>
+<ul>
+<li><code>remove</code> 删除元素本身。</li>
+<li><code>empt()</code> 和 <code>html(&#39;&#39;)</code> 作用等价，都可以删除元素里面的内容，只不过 <code>html</code> 还可以设置内容。</li>
+</ul>
+<h2 id="7-jquery-">7. jQuery 尺寸、位置操作</h2>
+<h3 id="7-1-jquery-">7.1 jQuery 尺寸</h3>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width()</code> / <code>height()</code></td>
+<td>取得匹配元素宽度和高度值只算 <code>width</code> / <code>height</code></td>
+</tr>
+<tr>
+<td><code>innerWidth()</code> / <code>innerHieght()</code></td>
+<td>取得匹配元素宽度和高度值包含 <code>padding</code></td>
+</tr>
+<tr>
+<td><code>outerWidth()</code> / <code>outerHeight()</code></td>
+<td>取得匹配元素宽度和高度值包含 <code>padding</code>、<code>border</code></td>
+</tr>
+<tr>
+<td><code>outerWidth(true)</code> / <code>outerHeight(true)</code></td>
+<td>取得匹配元素宽度和高度值包含 <code>padding</code>、<code>borde</code>、<code>margin</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>以上参数为空，则是获取相应值，返回的是数字型。</li>
+<li>如果参数为数字，则是修改相应值。</li>
+<li>参数可以不必写单位。</li>
+</ul>
+<h3 id="7-2-jquery-">7.2 jQuery 位置</h3>
+<p>位置主要有三个： <code>offset()</code>、<code>position()</code>、<code>scrollTop()</code> / <code>scrollLeft()</code></p>
+<h4 id="1-offset-">1. offset() 设置或获取元素偏移</h4>
+<p><code>offset()</code> 方法设置或返回被选元素相对于文档的偏移坐标，跟父级没有关系。 该方法有2个属性 <code>left</code>、<code>top</code>。<code>offset().top</code> 用于获取距离文档顶部的距离，<code>offset().left</code> 用于获取距离文档左侧的距离。 可以设置元素的偏移：</p>
+<pre><code class="lang-js">offset({ top: 10, left: 30 })
+</code></pre>
+<h4 id="2-position-">2. position() 获取元素偏移</h4>
+<ul>
+<li><code>position()</code> 方法用于返回被选元素相对于带有定位的父级偏移坐标，如果父级都没有定位，则以文档为准。</li>
+<li>该方法有2个属性 <code>left</code>、<code>top</code>。<code>position().top</code> 用于获取距离定位父级顶部的距离，<code>position().left</code> 用于获取距离定位父级左侧的距离。</li>
+<li><strong>该方法只能获取</strong>。</li>
+</ul>
+<h4 id="3-scrolltop-scrollleft-">3. scrollTop()/scrollLeft() 设置或获取元素被卷去的头部和左侧</h4>
+<ul>
+<li><code>scrollTop()</code> 方法设置或返回被选元素被卷去的头部。</li>
+<li>不跟参数是获取，参数为不带单位的数字则是设置被卷去的头部。</li>
+</ul>
+<p>举例：带有动画的返回顶部</p>
+<pre><code class="lang-js">$(&#39;.back&#39;).click(function () {
+    $(&#39;body, html&#39;).stop().animate({
+        scrollTop: 0
+    });
+});
+</code></pre>
+<h1 id="-jquery-">三、jquery事件</h1>
+<h2 id="1-">1. 事件注册</h2>
+<p>语法：</p>
+<pre><code class="lang-js">element.事件(function () {})Copy to clipboardErrorCopied
+$(&#39;div&#39;).click(function () { 事件处理程序 })
+</code></pre>
+<p>其他事件和原生基本一致。 比如 <code>mouseover</code>、<code>mouseout</code>、<code>blur</code>、<code>focus</code>、<code>change</code>、<code>keydown</code>、<code>keyup</code>、<code>resize</code>、<code>scroll</code> 等</p>
+<h2 id="2-">2. 事件处理</h2>
+<h3 id="2-1-on-">2.1 事件处理 on() 绑定事件</h3>
+<p><code>on()</code> 方法在匹配元素上绑定一个或多个事件的事件处理函数。 语法：</p>
+<pre><code class="lang-js">element.on(events, [selector], fn)
+</code></pre>
+<ul>
+<li><code>events</code>：一个或多个用空格分隔的事件类型，如 <code>&#39;click&#39;</code> 或 <code>&#39;keydown&#39;</code>。</li>
+<li><code>selector</code>：元素的子元素选择器。</li>
+<li><code>fn</code>：回调函数，即绑定在元素身上的侦听函数。</li>
+</ul>
+<h4 id="-1-on-">（1）<code>on()</code> 方法-绑定多个事件</h4>
+<p>可以绑定多个事件，多个处理事件处理程序。</p>
+<pre><code class="lang-js"> $(&#39;div&#39;).on({
+    mouseover: function(){},
+    mouseout: function(){},
+    click: function(){}
+});
+</code></pre>
+<p>如果事件处理程序相同：</p>
+<pre><code class="lang-js">$(&#39;div&#39;).on(&#39;mouseover mouseout&#39;, function() {
+    $(this).toggleClass(&#39;current&#39;);
+}); 
+</code></pre>
+<h4 id="-2-on-">（2）<code>on()</code> 方法事件委派</h4>
+<p>可以事件委派操作 。事件委派的定义就是，把原来加给子元素身上的事件绑定在父元素身上，就是把事件委派给父元素。这样就不要给多个子元素多次绑定事件了。</p>
+<pre><code class="lang-js">$(&#39;ul&#39;).on(&#39;click&#39;, &#39;li&#39;, function() {
+    alert(&#39;hello world!&#39;);
+});Copy to clipboardErrorCopied
+</code></pre>
+<p>在此之前有 <code>bind()</code>、 <code>live()</code>、<code>delegate()</code> 等方法来处理事件绑定或者事件委派，最新版本的请用 <code>on</code> 替代他们。</p>
+<h4 id="-3-on-">（3）<code>on()</code> 方法给动态元素绑定事件</h4>
+<p>动态创建的元素（暂时还没创建未来即将创建），<code>click()</code> 没有办法绑定事件， <code>on()</code> 可以给动态生成的元素绑定事件。</p>
+<pre><code class="lang-js">$(&#39;div&#39;).on(&#39;click&#39;, &#39;p&#39;, function(){
+    alert(&#39;俺可以给动态生成的元素绑定事件&#39;)
+});Copy to clipboardErrorCopied
+$(&#39;div&#39;).append($(&#39;&lt;p&gt;我是动态创建的p&lt;/p&gt;&#39;));
+</code></pre>
+<h3 id="2-2-off-">2.2 事件处理 off() 解绑事件</h3>
+<p><code>off()</code> 方法可以移除通过 <code>on()</code> 方法添加的事件处理程序。</p>
+<pre><code class="lang-js">// 解绑p元素所有事件处理程序
+$(&#39;p&#39;).off()
+
+// 解绑p元素上面的点击事件
+$(&#39;p&#39;).off( &#39;click&#39;) 
+
+// 解绑事件委托
+$(&#39;ul&#39;).off(&#39;click&#39;, &#39;li&#39;)
+</code></pre>
+<p>如果有的事件只想触发一次， 可以使用 <code>one()</code> 来绑定事件。</p>
+<h3 id="2-3-trigger-">2.3 自动触发事件 trigger()</h3>
+<p>有些事件希望自动触发, 比如轮播图自动播放功能跟点击右侧按钮一致。可以利用定时器自动触发右侧按钮点击事件，不必鼠标点击触发。</p>
+<ol>
+<li><p>简写形式</p>
+<pre><code class="lang-js">element.click() 
+</code></pre>
+</li>
+<li><p>自动触发模式</p>
+<pre><code class="lang-js">element.trigger(&#39;type&#39;)
+</code></pre>
+<p>举例：</p>
+<pre><code class="lang-js">$(&#39;p&#39;).on(&#39;click&#39;, function () {
+alert(&#39;hi~&#39;);
+}); 
+// 此时自动触发点击事件，不需要鼠标点击
+$(&#39;p&#39;).trigger(&#39;click&#39;); 
+</code></pre>
+</li>
+<li><p>自动触发模式
+<code>triggerHandler</code> 模式 <strong>不会触发元素的默认行为</strong>，这是和前面两种的区别。例如：input 的focus 默认行为为光标在闪烁</p>
+<pre><code class="lang-js">element.triggerHandler(&#39;type&#39;) 
+</code></pre>
+</li>
+</ol>
+<h2 id="3-">3. 事件对象</h2>
+<p>事件被触发，就会有事件对象的产生。</p>
+<pre><code class="lang-js">element.on(events,[selector],function(event) {})
+</code></pre>
+<p>阻止默认行为： - <code>event.preventDefault()</code> - <code>return false</code> 阻止冒泡： <code>event.stopPropagation()</code></p>
+<h1 id="-jquery-">四、jQuery 其他方法</h1>
+<h2 id="1-jquery-">1. jQuery 拷贝对象</h2>
+<p>如果想要把某个对象拷贝（合并）给另外一个对象使用，此时可以使用 <code>$.extend()</code> 方法</p>
+<p>语法：</p>
+<pre><code class="lang-js">$.extend([deep], target, object1, [objectN])Copy to clipboardErrorCopied
+</code></pre>
+<ul>
+<li><code>deep</code>: 如果设为 <code>true</code> 为深拷贝，不写则为浅拷贝</li>
+<li><code>target</code>：要拷贝的目标对象</li>
+<li><code>object1</code>：待拷贝到第一个对象的对象。</li>
+<li><code>objectN</code>：待拷贝到第 <code>N</code> 个对象的对象。</li>
+<li>浅拷贝是把被拷贝的 <strong>对象复杂数据类型</strong> 中的地址拷贝给目标对象，修改目标对象会影响被拷贝对象。
+对于简单数据类型属性，则不会拷贝地址。</li>
+<li>深拷贝，前面加 <code>true</code>， 完全克隆（拷贝的对象,而不是地址），修改目标对象不会影响被拷贝对象。</li>
+</ul>
+<h2 id="2-">2. 多库共存</h2>
+<ul>
+<li><p>问题概述： jQuery 使用 <code>$</code> 作为标示符，随着 jQuery 的流行,其他 js 库也会用这 <code>$</code> 作为标识符， 这样一起使用会引起冲突。</p>
+</li>
+<li><p>客观需求： 需要一个解决方案，让 jQuery 和其他的 js 库不存在冲突，可以同时存在，这就叫做多库共存。</p>
+</li>
+<li><p>jQuery 解决方案：</p>
+<ol>
+<li><p>把里面的 <code>$</code> 符号 统一改为 <code>jQuery。</code> 比如 <code>jQuery(&#39;div&#39;)</code></p>
+</li>
+<li><p>jQuery 变量规定新的名称：</p>
+<pre><code>$.noConflict()
+</code></pre><pre><code class="lang-js">var suibian = $.noConflict();
+suibian(&#39;div&#39;);Copy to clipboardErrorCopied
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="3-jquery-">3. jQuery 插件</h2>
+<h3 id="3-1-jquery-">3.1 jQuery 插件</h3>
+<p>jQuery 功能比较有限，想要更复杂的特效效果，可以借助于 jQuery 插件完成。 注意: 这些插件也是依赖于 jQuery 来完成的，所以必须要先引入 jQuery 文件，因此也称为 jQuery 插件。</p>
+<p>jQuery 插件常用的网站：</p>
+<ul>
+<li>jQuery 插件库 <a href="http://www.jq22.com/">http://www.jq22.com/</a></li>
+<li>jQuery 之家 <a href="http://www.htmleaf.com/">http://www.htmleaf.com/</a></li>
+</ul>
+<p>jQuery 插件使用步骤：</p>
+<ul>
+<li>引入相关文件。（jQuery 文件 和 插件文件）</li>
+<li>复制相关 html、css、js (调用插件)。</li>
+</ul>
+<p>jQuery 插件演示：</p>
+<ol>
+<li>瀑布流</li>
+<li>图片懒加载
+图片使用延迟加载在可提高网页下载速度。它也能帮助减轻服务器负载）
+当我们页面滑动到可视区域，再显示图片。
+我们使用jquery 插件库 EasyLazyload。 注意，此时的 js 引入文件和 js 调用必须写到 DOM 元素（图片）最后面</li>
+<li>全屏滚动（fullpage.js）<ul>
+<li>gitHub： <a href="https://github.com/alvarotrigo/fullPage.js">https://github.com/alvarotrigo/fullPage.js</a></li>
+<li>中文翻译网站： <a href="http://www.dowebok.com/demo/2014/77/">http://www.dowebok.com/demo/2014/77/</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="3-2-boot-strap-js-">3.2 Boot~strap JS 插件</h3>
+<p>bootstrap JS 插件：bootstrap 框架也是依赖于 jQuery 开发的，因此里面的 js 插件使用 ，也必须引入 jQuery 文件。</p>
+<p>相关网站：</p>
+<ul>
+<li><p>bootstrap 中文网：<a href="https://www.bootcss.com/">https://www.bootcss.com</a></p>
+</li>
+<li><p>bootstrap JS 中文网：</p>
+<p><a href="https://v3.bootcss.com/javascript">https://v3.bootcss.com/javascript</a></p>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;./bootstrap/css/bootstrap.min.css&quot;&gt;
+&lt;script src=&quot;./bootstrap/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</li>
+</ul>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

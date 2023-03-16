@@ -1,0 +1,2140 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">一、选择器</h1>
+<h2 id="1-">1、基础选择器</h2>
+<h3 id="1-1-">1.1、标签选择器</h3>
+<p>直接用 HTML 标签名作为选择器，按标签名称分类，<strong>为页面某一类标签指定统一的 CSS 样式。</strong></p>
+<p>==语法==</p>
+<pre><code class="lang-HTML">标签名 {
+    属性1： 属性值1;
+    属性2： 属性值2;
+    属性3： 属性值3;
+}
+</code></pre>
+<p>优点 标签选择器可以把某一标签全部选择出来，快速为同类型标签设置统一样式。</p>
+<p>缺点 不能设置差异化样式，只能选择全部当前标签。</p>
+<h3 id="1-2-">1.2、类选择器</h3>
+<p>==语法==</p>
+<p>使用 <code>class</code> 属性来调用 class 类，样式点定义，结构类调用，一个或多个，开发最常用。</p>
+<p>类选择器用 <code>.</code> 号显示。</p>
+<p>==注意==</p>
+<ol>
+<li>类选择器用 <code>.</code> 标识，紧跟类名。</li>
+<li>小写，使用 <code>-</code> 连接单词。</li>
+<li>不要用纯数字、中文。</li>
+<li>命名有意义。</li>
+</ol>
+<h3 id="1-3-id-">1.3、id选择器</h3>
+<p>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。</p>
+<p>HTML 元素以 id 属性来设置 id 选择器，用 <code>#</code> 来定义。</p>
+<pre><code class="lang-HTML">#id名 {
+    属性1: 属性值1;
+    ...
+}
+</code></pre>
+<p>样式 <code>#</code> 定义，结构 id 调用，别人切勿使用。</p>
+<p>==id 选择器与类选择器的区别==</p>
+<ol>
+<li>类选择器可以被多个元素调用。</li>
+<li>id 选择器只能允许一个标签调用。</li>
+<li>类选择器使用的较多，id 选择器用于唯一特性的标签。</li>
+</ol>
+<h3 id="1-4-">1.4、通配符选择器</h3>
+<p>==语法==</p>
+<pre><code class="lang-HTML">* {
+    属性1: 属性值1;
+    ...
+}
+</code></pre>
+<ul>
+<li>用 <code>*</code> 定义通配符选择器，选取页面中所有标签。</li>
+<li>不需要调用，自动给所有标签。</li>
+<li>特殊情况使用</li>
+</ul>
+<pre><code class="lang-HTML">* {
+    margin: 0;
+    padding: 0;
+}
+</code></pre>
+<h3 id="1-5-">1.5、总结</h3>
+<table>
+<thead>
+<tr>
+<th>基础选择器</th>
+<th>作用</th>
+<th>特点</th>
+<th>使用情况</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标签选择器</td>
+<td>选中所有相同标签</td>
+<td>不能差异化选择</td>
+<td>较多</td>
+<td><code>p{color:red;}</code></td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>选出一个或多个标签</td>
+<td>可以根据需求选择</td>
+<td>较多</td>
+<td><code>.nav {color: red;}</code></td>
+</tr>
+<tr>
+<td>id 选择器</td>
+<td>一次只能选出一个标签</td>
+<td>一个 id 属性在页面中只能出现一次</td>
+<td>一般配合 js 使用</td>
+<td><code>#nav {color: red;}</code></td>
+</tr>
+<tr>
+<td>通配符选择器</td>
+<td>选择所有标签元素</td>
+<td>选择的太多，有部分不需要</td>
+<td>特殊情况使用</td>
+<td><code>* {color: red; }</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-">2、复合选择器</h2>
+<h3 id="2-1-">2.1、后代选择器</h3>
+<p>后代选择器又称为包含选择器，可以选择父元素里的子元素。写法是将外层标签写在前面，内层标签写在后面，中间空格分开。 <strong>语法</strong></p>
+<pre><code class="lang-CSS">元素1 元素2 { 样式声明; }
+</code></pre>
+<ul>
+<li>上述语法表示选择元素 1 里面所有的元素 2</li>
+<li>可以连续嵌套，比如可以是孙子等</li>
+<li>元素 1、2 可以是任何基础标签</li>
+</ul>
+<h3 id="2-2-">2.2、子代选择器</h3>
+<p>子元素选择器（子选择器）只能选择作为元素作为元素的最近一级子元素。简单理解就是选亲儿子。</p>
+<p>==<strong>语法</strong>==</p>
+<pre><code class="lang-CSS">元素1 &gt; 元素2 { 样式声明; }
+</code></pre>
+<ul>
+<li>元素之间用大于号 <code>&gt;</code> 隔开</li>
+<li>1 为父级。二为子级，最终选择的是元素 2</li>
+<li>元素 2 必须是亲儿子。</li>
+</ul>
+<h3 id="2-3-">2.3、并集选择器</h3>
+<p>并集选择器可以选择多组标签，同时为他们定义相同的样式。通常用于集体声明。</p>
+<p>并集选择器是各选择器通过英文逗号 <code>,</code> 连接而成，任何形式的选择器都可以作为并集选择器的一部分。</p>
+<p>==<strong>语法</strong>==</p>
+<pre><code class="lang-css">元素1, 元素2 { 样式声明; }
+</code></pre>
+<h3 id="2-4-">2.4、伪类选择器</h3>
+<p>伪类选择器用于向某些选择器添加特殊的效果。 伪类选择器书写最大特点是用冒号 <code>:</code> 表示。 伪类选择器种类多，比如链接伪类选择器、结构选择器等。</p>
+<h4 id="2-4-1-">2.4.1、链接伪类</h4>
+<pre><code class="lang-css">a:link /*选择所有未被访问的链接*/
+a:visited /*选择所有已被访问的链接*/
+a:hover /*选择鼠标指针位于其上的链接*/
+a:active /*选择活动链接（鼠标按下未弹起的链接）*/
+</code></pre>
+<p><strong>注意事项</strong></p>
+<ol>
+<li>确保样式生效，要按照 LVHA 的顺序声明：link,visited,hover, active。</li>
+<li>a 链接在浏览器中有默认样式，所以实际开发都需要给链接单独指定样式。</li>
+</ol>
+<h4 id="2-4-2-focus-">2.4.2、focus伪类选择器</h4>
+<p><code>:focus</code> 伪类选择器用于获取焦点的表单元素。 焦点就是光标，一般情况 <code>&lt;input&gt;</code> 类表单元素才能获取，因此这个选择器也主要针对表单元素来说。</p>
+<pre><code class="lang-css">input:focus {
+  background-color: yellow;
+}
+</code></pre>
+<h3 id="2-5-">2.5、总结</h3>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>作用</th>
+<th>特征</th>
+<th>使用情况</th>
+<th>隔开符号及用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后代选择器</td>
+<td>用来选择后代元素</td>
+<td>可以是子孙后代</td>
+<td>较多</td>
+<td>符号是空格 <code>.nav a</code></td>
+</tr>
+<tr>
+<td>子代选择器</td>
+<td>选择最近一级元素</td>
+<td>只能选亲儿子</td>
+<td>较少</td>
+<td>符号是大于 <code>.nav&gt;p</code></td>
+</tr>
+<tr>
+<td>并集选择器</td>
+<td>选择某些相同样式的元素</td>
+<td>可以用于集体声明</td>
+<td>较多</td>
+<td>符号是逗号，<code>.nav, a</code></td>
+</tr>
+<tr>
+<td>链接伪类选择器</td>
+<td>选择不同状态的链接</td>
+<td>跟链接相关</td>
+<td>较多</td>
+<td>重点记住<code>a{}</code>和<code>a:hover{}</code></td>
+</tr>
+<tr>
+<td>:focus 选择器</td>
+<td>选择获得光标的表单</td>
+<td>跟表单相关</td>
+<td>较少</td>
+<td>记住<code>input:focus</code>用法</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-css3-">3、css3新增选择器</h2>
+<h3 id="3-1-">3.1、属性选择器</h3>
+<p>属性选择器可以根据元素特定属性的来选择元素。这样就可以不用借助于类或者id选择器。</p>
+<table>
+<thead>
+<tr>
+<th>简介</th>
+<th>选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>E[att]</code></td>
+<td>选择具有att属性的E元素</td>
+</tr>
+<tr>
+<td><code>E[att:val</code></td>
+<td>选择具有att属性且属性值等于val的E元素</td>
+</tr>
+<tr>
+<td><code>E[att^=val]</code></td>
+<td>匹配具有att属性且值以val开头的E元素</td>
+</tr>
+<tr>
+<td><code>E[att$=val]</code></td>
+<td>匹配具有att属性且值以val结尾的E元素</td>
+</tr>
+<tr>
+<td><code>E[att*=val]</code></td>
+<td>匹配具有att属性且值中含有val的E元素</td>
+</tr>
+</tbody>
+</table>
+<pre><code>input[type=text] {
+    color: green;
+}
+&lt;input type=&quot;password&quot;&gt;
+&lt;input type=&quot;text&quot;&gt;
+</code></pre><p>类选择器、属性选择器、伪类选择器的权重都为 10</p>
+<h3 id="3-2-">3.2、 结构伪类选择器</h3>
+<p>结构伪类选择器主要根据文档结构来选择器元素，常用于根据父级选择器里面的子元素。</p>
+<table>
+<thead>
+<tr>
+<th>选择符</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>E: first-child</code></td>
+<td>匹配父元素中的第一个子元素E</td>
+</tr>
+<tr>
+<td><code>E: last-child</code></td>
+<td>匹配父元素中最后一个E元素</td>
+</tr>
+<tr>
+<td><code>E: nth-child(n)</code></td>
+<td>匹配父元素中的第n个子元素E</td>
+</tr>
+<tr>
+<td><code>E: first-of-type</code></td>
+<td>指定类型E的第一个</td>
+</tr>
+<tr>
+<td><code>E: last-of-type</code></td>
+<td>指定类型E的最后一个</td>
+</tr>
+<tr>
+<td><code>E: nth-of-type(n)</code></td>
+<td>指定类型E的第n个</td>
+</tr>
+</tbody>
+</table>
+<pre><code>ul li:first-child {
+    background-color: pink;
+}
+ul li:last-child {
+    background-color: pink;
+}
+ul li:nth-child(5) {
+    background-color: skyblue;
+}
+</code></pre><p>重点：<code>E: nth-child(key)</code></p>
+<ul>
+<li><code>key</code> 可以是整数、关键字（<code>even/odd</code>）、公式（<code>n/2n/2n+1</code>）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th>取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2n</td>
+<td>偶数</td>
+</tr>
+<tr>
+<td>2n-1</td>
+<td>奇数</td>
+</tr>
+<tr>
+<td>5n</td>
+<td>5 10 15 ...</td>
+</tr>
+<tr>
+<td>n+</td>
+<td>5 6 7 8 ...</td>
+</tr>
+<tr>
+<td>-n+5</td>
+<td>前五个</td>
+</tr>
+</tbody>
+</table>
+<p>关于 <code>nth-of-type</code> 与 <code>nth-of-child</code></p>
+<ol>
+<li><code>div: nth-child</code> 会把所有的盒子都排列序号 执行的时候首先看 <code>:nth-child(1)</code> 之后回去看 前面 <code>div</code></li>
+<li><code>div: nth-of-type</code> 会把指定元素的盒子排列序号 执行的时候首先看 div指定的元素 之后回去看 <code>:nth-of-type(1)</code> 第几个孩子</li>
+</ol>
+<p>区别：</p>
+<ol>
+<li>nth—child对父元素里面所有孩子排序选择（序号是固定的）先找到第n个孩子，然后看看是否和E匹配</li>
+<li>nth—of—type对父元素里面指定子元素进行排序选择。先去匹配E ，然后再根据E找第n个孩子</li>
+</ol>
+<h3 id="3-3-">3.3、 伪元素选择器</h3>
+<p>伪元素选择器可以帮助我们利用CSS创建新标签元素，而不需要HTML标签，从而简化HTML结构。</p>
+<table>
+<thead>
+<tr>
+<th>选择符</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>::before</code></td>
+<td>在元素内部的前面插入内容</td>
+</tr>
+<tr>
+<td><code>::after</code></td>
+<td>在元素内部的后面插入内容</td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<ul>
+<li>before 和 after 创建一个元素，但是属于行内元素</li>
+<li>新创建的这个元素在文档树中是找不到的，所以我们称为伪元素</li>
+<li>语法：<code>element：before{}</code></li>
+<li>before 和 after 必须有 content 属性</li>
+<li>before 在父元素内容的前面创建元素， after 在父元素内容的后面插入元素</li>
+<li>伪元素选择器和标签选择器一样，权重为 1</li>
+</ul>
+<h4 id="2-4-1-">2.4.1 案例一：伪元素字体图标</h4>
+<pre><code> div::after {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: &#39;icomoon&#39;;
+    content: &#39;\e91b&#39;;
+    color: red;
+    font-size: 18px;
+}
+</code></pre><h4 id="2-4-2-">2.4.2 案例二：伪元素遮罩层</h4>
+<pre><code>.tudou::before {
+    content: &#39;&#39;;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3) url(images/arr.png) no-repeat center;
+}
+</code></pre><h4 id="2-4-3-">2.4.3 案例三：伪元素清除浮动</h4>
+<pre><code>.clearfix::after {
+    content: &#39;&#39;;
+    display: block; 
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+</code></pre><p>双伪元素清除浮动</p>
+<pre><code>.clearfix::before,
+.clearfix::after {
+    content: &#39;&#39;;
+    display: block;
+}
+.clearfix::after {
+    clear: both;
+}
+</code></pre><h1 id="-">二、浮动</h1>
+<h2 id="1-">1、清除浮动</h2>
+<h3 id="1-1-">1.1额外标签法</h3>
+<p>也成为隔墙法，是 W3C 推荐的方法。</p>
+<p>额外标签法是在最后一个浮动元素末尾添加一个 <strong>空块级元素</strong>，给其赋以属性 <code>clear:both;</code>。</p>
+<pre><code class="lang-html">&lt;style&gt;
+  clear: both;
+&lt;/style&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+</code></pre>
+<ul>
+<li>优点：通俗易懂，书写方便</li>
+<li>缺点：添加许多无意义的标签，结构化差</li>
+</ul>
+<p>总结</p>
+<ol>
+<li><p>清除浮动的本质</p>
+<p>清除浮动的本质是清除浮动元素脱离标准流造成的影响</p>
+</li>
+<li><p>清除浮动的策略</p>
+<p><strong>闭合浮动</strong>，只让浮动在父盒子内部影响，不影响父盒子外面的其他盒子。</p>
+</li>
+<li><p>使用场景</p>
+<p>实际开发中可能会遇到，但是不常用。</p>
+</li>
+</ol>
+<h3 id="1-2-overflow">1.2父级添加 overflow</h3>
+<p>可以给父级添加 <code>overflow</code> 属性，将其属性设置为 <code>hidden</code>、<code>auto</code>或<code>scroll</code>。</p>
+<p>注意是给父元素添加代码：</p>
+<ul>
+<li>优点：代码简洁</li>
+<li>缺点：无法显示溢出部分</li>
+</ul>
+<h3 id="1-3-after-">1.3、:after 伪元素法</h3>
+<p>实际上也是额外标签法的一种。</p>
+<pre><code class="lang-css">.clearfix {
+  content: &quot;&quot;;
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  /*IE6、7专有*/
+  *zoom: 1;
+}
+</code></pre>
+<h3 id="1-4-">1.4、双伪元素法</h3>
+<p>语法</p>
+<pre><code class="lang-css">.clearfix::before,
+.clearfix::after {
+  content: &quot;&quot;;
+  display: table;
+}
+.clearfix::after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+</code></pre>
+<ul>
+<li>优点：代码更简洁</li>
+<li>缺点：照顾低版本浏览器</li>
+<li>代表网站：小米、腾讯</li>
+</ul>
+<h3 id="1-5-">1.5、清除浮动总结</h3>
+<p>为什么需要清除浮动？</p>
+<ol>
+<li>父级没高度</li>
+<li>子盒子浮动了</li>
+<li>影响下面布局了，应该清除浮动。</li>
+</ol>
+<h1 id="-">三、定位</h1>
+<h2 id="1-staic">1、静态定位 staic</h2>
+<p>静态定位是元素的默认定位方式，无定位的意思。语法：</p>
+<pre><code class="lang-css">选择器 {
+  position: static;
+}
+</code></pre>
+<p>静态定位按照标准流特性摆放位置，它没有边偏移静态定位在布局时很少用到。</p>
+<h2 id="2-relative">2、相对定位 relative</h2>
+<p>相对定位是元素在移动位置的时候，是相对于它原来的位置来说的（自恋型）。</p>
+<p>语法：</p>
+<pre><code class="lang-css">选择器 {
+  position: relative;
+}
+</code></pre>
+<p><strong>相对定位的特点：（务必记住）</strong></p>
+<ol>
+<li>它是相对于自己原来的位置来移动的（移动位置的时候参照点是自己原来的位置）。</li>
+<li>原来在标准流的位置继续占有，后面的盒子仍然以标准流的方式对待它。（不脱标，继续保留原来位置因此，相对定位并没有脱标。它最典型的应用是给绝对定位当爹的。</li>
+</ol>
+<h2 id="3-absolute">3、绝对定位 absolute</h2>
+<p>绝对定位是元素在移动位置的时候，是相对于它祖先元素来说的（拼爹型）。</p>
+<p>语法：</p>
+<pre><code class="lang-css">选择器 {
+  position: absolute;
+}
+</code></pre>
+<p>绝对定位的特点： （务必记住）</p>
+<ol>
+<li>如果 <strong>没有祖先元素</strong> 或者 <strong>祖先元素没有定位</strong>，则以 <strong>浏览器</strong> 为准定位（ Document 文档）。</li>
+<li>如果祖先元素有定位（相对、绝对、固定定位） ，则以最近一级的有定位祖先元素为参考点移动位置。</li>
+<li>绝对定位不再占有原先的位置。（脱标）</li>
+</ol>
+<h2 id="4-">4. 子绝父相的由来</h2>
+<p>弄清楚这个口诀，就明白了绝对定位和相对定位的使用场景。</p>
+<p>这个“子绝父相”太重要了，是我们学习定位的口诀，是定位中最常用的一种方式这句话的意思是：子级是绝对定位的话，父级要用相对定位</p>
+<ul>
+<li><p>子级绝对定位，不会占有位置，可以放到父盒子里面的任何一个地方，不会影响其他的兄弟盒子。</p>
+</li>
+<li><p>父盒子需要加定位限制子盒子在父盒子内显示。</p>
+</li>
+<li><p>父盒子布局时，需要占有位置，因此父亲只能是相对定位。</p>
+<p>这就是子绝父相的由来，所以相对定位经常用来作为绝对定位的父级。 总结：因为父级需要占有位置，因此是相对定位，子盒子不需要占有位置，则是绝对定位</p>
+</li>
+</ul>
+<h2 id="5-fixed-">5、 固定定位 fixed （重要）</h2>
+<p>固定定位是元素固定于浏览器可视区的位置。主要使用场景：可以在浏览器页面滚动时元素的位置不会改变。</p>
+<p>语法：</p>
+<pre><code class="lang-css">选择器 {
+  position: fixed;
+}
+</code></pre>
+<p>固定定位的特点： （务必记住）</p>
+<ol>
+<li>以浏览器的可视窗口为参照点移动元素。<ul>
+<li>跟父元素没有任何关系</li>
+<li>不随滚动条滚动</li>
+</ul>
+</li>
+<li>固定定位不 占有原先的位置。 固定定位也是脱标的，其实固定定位也可以看做是一种特殊的绝对定位。</li>
+</ol>
+<p>固定定位小技巧：固定在版心右侧位置。</p>
+<ol>
+<li>让固定定位的盒子 left： 50%，走到浏览器可视区（也可以看做版心）的一半位置。</li>
+<li>让固定定位的盒子 margin—left）板心宽度的一半距离。多走版心宽度的一半位置就可以让固定定位的盒子贴着版心右侧对弃了</li>
+</ol>
+<h2 id="6-sticky">6、粘性定位 sticky</h2>
+<p>粘性定位可以被认为是相对定位和固定定位的混合。Sticky 粘性的 语法：</p>
+<pre><code class="lang-css">选择器 {
+  position: sticky;
+  top: 10px;
+}
+</code></pre>
+<p>粘性定位的特点：</p>
+<ol>
+<li>以浏览器的可视窗口为参照点移动元素（固定定位特点）</li>
+<li>粘性定位占有原先的位置（相对定位特点）</li>
+<li>必须添加 top， left， right， bottom 其中一个才有效跟页面滚动搭配使用。兼容性较差， IE 不支持。</li>
+</ol>
+<h2 id="7-">7、定位的扩展</h2>
+<h3 id="7-1-">7.1、绝对定位的盒子居中</h3>
+<p>加了绝对定位的盒子不能通过 margin：0auto 水平居中，但是可以通过以下计算方法实现水平和垂直居中。</p>
+<ul>
+<li>left： 50% ：让盒子的左侧移动到父级元素的水平中心位置。</li>
+<li>margin—left：—100px； ：让盒子向左移动自身宽度的一半。</li>
+</ul>
+<h1 id="-">四、元素的显示与隐藏</h1>
+<h3 id="1-display-">1、display 属性</h3>
+<ul>
+<li><code>display</code> 属性用于设置一个元素应如何显示。</li>
+<li><code>display： none;</code> 隐藏对象</li>
+<li><code>display ： block;</code> 除了转换为块级元素之外，同时还有显示元素的意思 display 隐藏元素后，不再占有原来的位置。</li>
+</ul>
+<p>后面应用及其广泛，搭配 JS 可以做很多的网页特效。</p>
+<h3 id="2-visibility-">2、 visibility 可见性</h3>
+<ul>
+<li>visibility 属性用于指定一个元素应可见还是隐藏。- - visibility : visible;元素可视</li>
+<li>visibility : hidden;元素隐藏</li>
+<li>visibility 隐藏元素后，继续占有原来的位置</li>
+</ul>
+<p>如果隐藏元素想要原来位置，就用 <code>visibility ： hidden</code> 如果隐藏元素不想要原来位置，就用 <code>display ： none</code> （用处更多重点）</p>
+<h3 id="3-overflow-">3、overflow 溢出</h3>
+<p>overflow 属性指定了如果内容溢出一个元素的框（超过其指定高度及宽度）时，会发生什么。</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visible</td>
+<td>不剪切内容也不添加滚动条</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>不显示超过对象尺寸的内容</td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>超出的部分隐藏掉不管超出内容否，总是显示滚动条</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>超出自动显示滚动条，不超出不显示滚动条</td>
+</tr>
+</tbody>
+</table>
+<p>一般情况下，我们都不想让溢出的内容显示出来，因为溢出的部分会影响布局。但是如果有定位的盒子，请慎用<code>overflowhidden</code> 因为它会隐藏多余的部分。</p>
+<h3 id="4-">4、应用（处理文字溢出）</h3>
+<pre><code class="lang-css">    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+</code></pre>
+<p>效果图</p>
+<p><img src="C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230204163816204.png" alt=""></p>
+<h1 id="-css-">五、css高级</h1>
+<h2 id="1-">1、精灵图</h2>
+<h3 id="1-1-">1. 1、精灵图</h3>
+<p>一个网页中往往会应用很多小的背景图像作为修饰，当网页中的图像过多时，服务器就会频繁地接收和发送请求图片，造成服务器请求压力过大，这将大大降低页面的加载速度。</p>
+<p>因此，为了有效地减少服务器接收和发送请求的次数，提高页面的加载速度，出现了 CSS 精灵技术（也称 CSS Sprites. CSS 雪碧）。</p>
+<h3 id="1-2-">1.2、精灵图的使用</h3>
+<p>使用精灵图核心总结：</p>
+<ol>
+<li>精灵图主要针对于小的背景图片使用。</li>
+<li>主要借助于背景位置来实现———background—position.</li>
+<li>一般情况下精灵图都是负值。（千万注意网页中的坐标： x 轴右边走是正值，左边走是负值， y 轴同理。）</li>
+</ol>
+<h2 id="2-css-">2、css三角图形</h2>
+<pre><code class="lang-css">.box1 {
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: black;
+  /* 照顾兼容性 */
+  line-height: 0;
+  font-size: 0;
+}
+</code></pre>
+<h2 id="3-">3、取消表单轮廓和文本域缩放</h2>
+<pre><code class="lang-css">input {
+  outline: none;
+}
+textarea {
+  outline: none;
+  resize: none;
+}
+</code></pre>
+<h2 id="4-vertical-align">4、vertical-align</h2>
+<p><code>vertical-align</code> 指定行内/行内块元素的元素的垂直对齐方式。</p>
+<h3 id="4-1-vertical-align">4.1、图片、表单和文字对齐 vertical-align</h3>
+<pre><code class="lang-css">img {
+  vertical-align: middle;
+}
+li {
+  disaplay: inline-block;
+  vertical-align: middle;
+}Copy to clipboardErrorCopied
+</code></pre>
+<h3 id="4-2-">4.2、解决图片底部默认空白缝隙问题</h3>
+<p>bug ：图片底侧会有一个空白缝隙，原因是行内块元素会和文字的基线对齐。主要解决方法有两种：</p>
+<ol>
+<li>给图片添加 <code>vertical—align: middle topl bottom;</code> 等。（提倡使用的）</li>
+<li>把图片转换为块级元素 <code>display: block；</code></li>
+</ol>
+<h2 id="5-">5、溢出文字省略号显示</h2>
+<h3 id="5-1-">5.1、单行文本</h3>
+<pre><code class="lang-css">/*1·先强制一行内显示文本*/
+white-space: nowrap;
+默认normal 自动换行）
+/*2·超出的部分隐藏*/
+overflow: hidden;
+/*3.文字用省略号替代超出的部分*/
+text-overflow: ellipsis;
+</code></pre>
+<h3 id="5-2-">5.2、多行文本</h3>
+<pre><code class="lang-css">overflow:hidden
+text-overflow:ellipsis
+/*弹性收缩盒子模型显示*/
+display:-webkit-box
+/*限制在一个块元素显示文本的行数*/
+-weikit-line-clamp:2
+/*设置或检索伸缩盒对象的子元素的排列方式*/
+-webkit-box-orient:vertical;
+</code></pre>
+<h2 id="6-margin-">6、margin负值巧妙利用</h2>
+<ol>
+<li>解决并排盒子之间的边框宽度加倍问题。 原理：让每个盒子压住前面的盒子，边框叠加。</li>
+<li>鼠标移动边框颜色变化效果。</li>
+</ol>
+<pre><code class="lang-css">/*如果盒子没有定位，则鼠标经过添加相对定位即可*/
+ul li:hover {
+  position: relative;
+  border: 1px solid orange;
+}
+/*若li都有定位，则使用 z-index 提高层级*/
+ul li {
+  z-index: 1;
+  border: 1px solid orange;
+}
+</code></pre>
+<h2 id="7-">7、行内块元素巧妙运用</h2>
+<p>行内块元素布局当前页码和 <code>pre</code>，<code>next</code>盒子，使用 <code>text-align: center</code> 居中。</p>
+<h1 id="-html-">六、html新特性</h1>
+<h2 id="1-html5-">1、HTML5新增语义化标签</h2>
+<ul>
+<li><code>&lt;header&gt;</code>：头部标签</li>
+<li><code>&lt;nav&gt;</code>：导航标签</li>
+<li><code>&lt;article&gt;</code>：内容标签</li>
+<li><code>&lt;section&gt;</code>：定义文档某个区域</li>
+<li><code>&lt;asider&gt;</code>：侧边栏标签</li>
+<li><code>&lt;footer&gt;</code>：尾部标签</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>主要针对搜索引擎的</li>
+<li>这些新标签可以使用多次</li>
+<li>在IE9中，需要把这些元素改成块级元素</li>
+<li>移动端更加喜欢这些标签‘</li>
+</ul>
+<h2 id="2-html5-">2、HTML5新增多媒体标签</h2>
+<h3 id="2-1-vedio-">2.1、视频 <vedio></h3>
+<p>所有浏览器支持 mp4 格式。</p>
+<ul>
+<li><code>autoplay=&quot;autoplay&quot;</code></li>
+<li><code>controls=&quot;controls&quot;</code> 显示控件</li>
+<li><code>width</code> 设置宽度</li>
+<li><code>height</code> 设置高度</li>
+<li><code>loop=loop</code> 设置循环播放</li>
+<li><code>preload=&quot;auto/none&quot;</code> 是否预加载</li>
+<li><code>src=url</code> 视频地址</li>
+<li><code>poster=url</code> 封面图片</li>
+<li><code>muted=muted</code> 静音播放</li>
+</ul>
+<h4 id="2-2-audio-">2.2、 音频 <audio></h4>
+<p>所有浏览器支持 mp3 格式。</p>
+<ul>
+<li><code>controls</code>：显示控件</li>
+<li><code>autoplay</code>：（谷歌禁用）</li>
+<li><code>loop=loop</code> 设置循环播放</li>
+</ul>
+<h2 id="3-input-">3、input新增</h2>
+<h3 id="3-1-">3.1、类型</h3>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type=&quot;email&quot;</code></td>
+<td>限制用户输入为Email类型</td>
+</tr>
+<tr>
+<td><code>type=&quot;url&quot;</code></td>
+<td>限制用户输入为URL类型</td>
+</tr>
+<tr>
+<td><code>type=&quot;date&quot;</code></td>
+<td>限制用户输入为日期类型</td>
+</tr>
+<tr>
+<td><code>type=&quot;time&quot;</code></td>
+<td>限制用户输入为时间类型</td>
+</tr>
+<tr>
+<td><code>type=&quot;month&quot;</code></td>
+<td>限制用户输入为月类型</td>
+</tr>
+<tr>
+<td><code>type=&quot;week&quot;</code></td>
+<td>限制用户输入为周类型</td>
+</tr>
+<tr>
+<td><code>type=&quot;number&quot;</code></td>
+<td>限制用户输入为数字类型</td>
+</tr>
+<tr>
+<td><code>type=&quot;tel&quot;</code></td>
+<td>手机号码</td>
+</tr>
+<tr>
+<td><code>type=&quot;search&quot;</code></td>
+<td>搜索框</td>
+</tr>
+<tr>
+<td><code>type=&quot;color&quot;</code></td>
+<td>生成一个颜色表单</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-">3.2、表单属性</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>required</td>
+<td>required</td>
+<td>表单拥有该属性表示其内容不能为空，必填</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>提示文本</td>
+<td>表单的提示信息</td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>autofocus</td>
+<td>自动聚焦属性，页面加载完成自动聚焦到指定表单</td>
+</tr>
+<tr>
+<td>autocomplete</td>
+<td>off/on</td>
+<td>当用户在字段开始键入时，浏览器基于之前键入过的值，应该显示出在字段中填写的选项默认已经打开,如autocomplete=&quot;on&quot;,关闭autocomplete =&quot;off&quot; 需要放在表单内，同时加上name属性，同时成功提交</td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>multiple</td>
+<td>可以多选文件</td>
+</tr>
+</tbody>
+</table>
+<p>可以通过以下设置方式修改placeholder里面的字体颜色：</p>
+<pre><code class="lang-css">input::placeholder {
+    color: pink;
+}
+</code></pre>
+<h1 id="-css-">七、css新特性</h1>
+<h2 id="1-">1、盒子模型</h2>
+<p>CSS3中可以通过 box-sizing 来指定盒模型，有2个值：即可指定为 content-box，border-box ，这样我们计算盒子大小的方式就发生了改变。</p>
+<p>可以分成两种情况：</p>
+<ol>
+<li><code>box-sizing：content-box</code> 盒子大小为 width + padding + border （以前默认的）</li>
+<li><code>box-sizing: border-box</code> 盒子大小为 width 如果盒子模型我们改为了 box-sizing： border-box ，那padding 和 border就不会撑大盒子了（前提 padding 和 border 不会超过 width 宽度）</li>
+</ol>
+<h2 id="2-">2、颜色渐变</h2>
+<p>CSS 渐变是 CSS3 图像模块中添加的新类型的图像。CSS 渐变允许您在 <strong>两个或多个指定颜色之间显示平滑过渡</strong>。 浏览器支持两种类型的渐变：</p>
+<ul>
+<li>线性渐变（Linear Gradients）：向下/向上/向左/向右/对角方向，用 <code>linear-gradient()</code> 函数定义</li>
+<li>径向渐变（Radial Gradients）：由它们的中心定义，用 <code>radial-gradient()</code> 函数定义</li>
+</ul>
+<h3 id="2-1-">2.1、线性渐变</h3>
+<p>语法</p>
+<pre><code class="lang-css">background: linear-gradient(direction, color1, color2, ...);
+</code></pre>
+<p>参数</p>
+<ul>
+<li><code>direction</code>：指定了颜色过度的方向，不写默认为从上到下，值可以为 <code>to bottom</code>、<code>to top</code>、<code>to right</code>、<code>to left</code>、<code>to bottom right</code> 等。</li>
+<li><code>color1</code>：可以有多个 <code>color</code> 值，指定了颜色变化的范围。</li>
+</ul>
+<h2 id="3-transition-">3、transition过渡</h2>
+<pre><code class="lang-css">transition: 要过渡的属性 花费时间 运动曲线 何时开始;
+</code></pre>
+<ol>
+<li>属性：想要变化的css属性，宽度高度背景颜色内外边距都可以。如果想要所有的属性都变化过渡，写一个all就可以。</li>
+<li>花费时间：单位是秒（必须写单位）比如 0.5s</li>
+<li>运动曲线：默认是ease （可以省略）</li>
+<li>何时开始：单位是秒（必须写单位）可以设置延迟触发时间默认是Os （可以省略）</li>
+</ol>
+<pre><code class="lang-css">div {
+    width: 200px;
+    height: 100px;
+    background-color: pink;
+    /* transition: width .5s, height .5s; */
+    transition: all .5s;
+}
+div:hover {
+    width: 400px;
+    height: 200px;
+    background-color: skyblue;
+}
+</code></pre>
+<h2 id="4-">4、私有前缀</h2>
+<p>浏览器私有前缀是为了兼容老版本的写法，比较新版本的浏览器无须添加。</p>
+<h3 id="4-1-">4.1、私有前缀</h3>
+<ul>
+<li><code>-moz-</code>: 代表firefox浏览器私有属性</li>
+<li><code>-ms-</code>: 代表ie浏览器私有属性</li>
+<li><code>-webkit-</code>: 代表safari、chrome私有属性-o-∶代表Opera私有属性</li>
+</ul>
+<h3 id="4-2-">4.2、提倡的写法</h3>
+<pre><code class="lang-css">-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+border-radius: 10px;
+</code></pre>
+<h2 id="5-">5、其他特性</h2>
+<h3 id="5-1-fiter">5.1、滤镜fiter</h3>
+<p>filter CSS属性将模糊或颜色偏移等图形效果应用于元素。</p>
+<pre><code class="lang-css">filter: 函数();
+</code></pre>
+<p>例如： <code>filter： blur(5px);</code> blur 模糊处理数值越大越模糊</p>
+<h3 id="5-2-css3-calc-">5.2、CSS3 calc函数</h3>
+<p>此 CSS 函数让你在声明CSS属性值时执行一些计算。</p>
+<pre><code class="lang-css">width: calc(100%-30px);
+/* 子盒子永远比父盒子小30px */
+</code></pre>
+<p>括号里面可以使用 <code>+ - * /</code> 来进行计算。</p>
+<h1 id="-2d-">八、2D转换</h1>
+<h2 id="1-translate">1、移动translate</h2>
+<p>==语法==</p>
+<pre><code class="lang-css">transform: translate(x, y);
+transform: translateX(x);
+transform: translateY(y);
+</code></pre>
+<ul>
+<li>参数 <code>x, y</code> 可以是百分数，为盒子自身的宽度或高度。</li>
+</ul>
+<p>重点</p>
+<ul>
+<li>定义 2D 转换中的移动，沿着X和Y轴移动元素</li>
+<li>translate 最大的优点：不会影响到其他元素的位置</li>
+<li>translate 中的百分比单位是相对于 自身元素 的 <code>trainslate:(50%，50%)</code></li>
+<li>对行内标签没有效果</li>
+</ul>
+<h3 id="1-1-">1.1 让盒子实现水平和垂直居中</h3>
+<pre><code class="lang-css">/*子绝父相*/
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+</code></pre>
+<h2 id="2-rotate">2、旋转 rotate</h2>
+<p>值为正数则顺时针旋转，为负数则逆时针旋转。</p>
+<pre><code class="lang-css">transform: rotate(45deg);
+</code></pre>
+<h2 id="3-2d-transform-origin">3、2D 转换中心点 transform-origin</h2>
+<p>我们可以通过设置 <code>transform-origin</code> 设置元素转换的中心点。</p>
+<pre><code class="lang-css">transform-origin: x y;
+</code></pre>
+<p>==重点==</p>
+<ul>
+<li>注意后面的参数 x 和 y 用空格隔开</li>
+<li>x y 默认转换的中心点是元素的中心点（50% 50%）</li>
+<li>还可以给 x y 设置像素或者方位名词（top bottom left right center）</li>
+</ul>
+<h2 id="4-2d-scale">4、2D 转换之缩放 scale</h2>
+<pre><code class="lang-css"> transform: scale(x, y);
+</code></pre>
+<p><code>x, y</code> 不跟单位的话，是指缩放的倍数。</p>
+<pre><code class="lang-css">transform: scale(2,1);
+</code></pre>
+<ul>
+<li>参数大于 <code>1</code> 则放大，小于 <code>1</code> 则缩小。</li>
+<li>可以配合 <code>transform-origin</code> 使用，改变缩放中心。</li>
+<li><code>scale</code> 的优势：不占空间</li>
+</ul>
+<h2 id="5-2d-">5、2D 转换综合写法</h2>
+<ol>
+<li>同时使用多个转换，其格式为： <code>transform: translate(), rotate() scale()</code></li>
+<li>其顺序会影转换的效果。（先旋转会改变坐标轴方向）</li>
+<li>当我们同时有位移和其他属性的时候，记得要将位移放到最前.</li>
+</ol>
+<h1 id="-">九、动画</h1>
+<p>动画( animation ) 是 CSS3 中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。 相比较过渡，动画可以实现更多变化，更多控制，连续自动播放等效果。</p>
+<h2 id="1-">1、动画的基本使用</h2>
+<p>分为两步：</p>
+<ol>
+<li>定义动画</li>
+<li>使用动画</li>
+</ol>
+<pre><code class="lang-css"> /* 1. 定义动画 */
+@keyframes move {
+    /*开始状态*/
+    0% {
+        transform: translateX(0px);
+    }
+    /*结束状态*/
+    100% {
+        transform: translateX(1000px);
+    }
+}
+div {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    /* 2. 调用动画 */
+    /* 动画名称 */
+    animation-name: move;
+    /* 持续时间 */
+    animation-duration: 5s;
+}
+</code></pre>
+<p><strong>动画序列</strong></p>
+<ul>
+<li>0% 是动画的开始，100% 是动画的完成。这样的规则就是动画序列。</li>
+<li>在 @keyframes 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果。</li>
+<li>动画是使元素从一种样式逐渐变化为另一种样式的效果。您可以改变任意多的样式任意多的次数。</li>
+<li>请用百分比来规定变化发生的时间，或用关键词&quot;from&quot;和“to”，等同于0%和100%。</li>
+</ul>
+<p>注意:</p>
+<ol>
+<li>可以做多个状态的变化 <code>keyframes</code> 关键帧</li>
+<li>百分比必须是整数</li>
+<li>百分比是总时间 <code>animation-duration</code> 的划分</li>
+</ol>
+<h2 id="2-">2、动画常用属性</h2>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyframes</code></td>
+<td>规定动画。</td>
+</tr>
+<tr>
+<td><code>animation</code></td>
+<td>所有动画属性的简写属性,除了animation-play-state属性。</td>
+</tr>
+<tr>
+<td><code>animation-name</code></td>
+<td>规定@keyframes动画的名称。(必须的)</td>
+</tr>
+<tr>
+<td><code>animation-duration</code></td>
+<td>规定动画完成一个周期所花费的秒或毫秒，默认是0。（必须的)</td>
+</tr>
+<tr>
+<td><code>animation-timing-function</code></td>
+<td>规定动画的速度曲线，默认是“ease” .</td>
+</tr>
+<tr>
+<td><code>animation-delay</code></td>
+<td>规定动画何时开始，默认是0.</td>
+</tr>
+<tr>
+<td><code>animation-iteration-count</code></td>
+<td>规定动画被播放的次数，默认是1，还有infinite</td>
+</tr>
+<tr>
+<td><code>animation-direction</code></td>
+<td>规定动画是否在下一周期逆向播放，默认是 &quot;normal&quot;,alternate逆播放</td>
+</tr>
+<tr>
+<td><code>animation-play-state</code></td>
+<td>规定动画是否正在运行或暂停。默认是&quot;running&quot;,还有&quot;paused&quot;.</td>
+</tr>
+<tr>
+<td><code>animation-fill-mode</code></td>
+<td>规定动画结束后状态,保持forwards回到起始backwards</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-">3、动画简写属性</h2>
+<pre><code class="lang-css">animation: 动画名称 持续时间 运动曲线 何时开始 播放次数 是否反方向 动画起始或者结束的状态;
+animation: myfirst 5s linear 2s infinite alternate;
+</code></pre>
+<ul>
+<li>简写属性里面不包含 <code>animation-play-state</code></li>
+<li>暂停动画: <code>animation-play-state: puased;</code></li>
+<li>经常和鼠标经过等其他配合使用想要动画走回来，而不是直接跳回来: <code>animation-direction: alternate</code></li>
+<li>盒子动画结束后，停在结束位置: <code>animation-fill-mode: forwards</code></li>
+</ul>
+<h2 id="4-">4、速度曲线细节</h2>
+<p>animation-timing-function：规定动画的速度曲线</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>linear</td>
+<td>动画从头到尾的速度都是相同的。匀速</td>
+</tr>
+<tr>
+<td>ease</td>
+<td>默认。动画以低速开始，然后加快，在结束前变慢</td>
+</tr>
+<tr>
+<td>ease-in</td>
+<td>动画以低速开始</td>
+</tr>
+<tr>
+<td>ease-out</td>
+<td>动画以低速结束</td>
+</tr>
+<tr>
+<td>ease-in-out</td>
+<td>动画以低速开始和结束</td>
+</tr>
+<tr>
+<td>steps()</td>
+<td>指定了时间函数中的间隔数量（步长）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="-3d-">十、3D转换</h1>
+<h2 id="1-">1、三维坐标系</h2>
+<p>x轴：水平向右   注意：x右边是正值，左边是负值</p>
+<p>y轴：垂直向下   注意：y下面是正值，上面是负值</p>
+<p>z轴：屏幕垂直   注意：往外面是正值，往里面是负值</p>
+<h2 id="2-tranlate3d">2、tranlate3D</h2>
+<pre><code class="lang-css">transform: translate(x, y ,z);
+transform: translateX(x);
+transform: translateY(y);
+transform: translateZ(Z);
+</code></pre>
+<p>注意：</p>
+<ul>
+<li><p>简写x,y,z不能省略，如果没有就写0</p>
+</li>
+<li><p>父盒子没有加透视，z轴translateZ()没有变化</p>
+</li>
+</ul>
+<h2 id="3-perspective">3、透视perspective</h2>
+<p><strong>透视</strong>：在2D平面产生近大远小视觉立体，但是只是效果二维的</p>
+<ul>
+<li>如果想要在网页产生3D效果需要透视（理解成3D物体投影在2D平面内）</li>
+<li>模拟人类的视觉位置，可认为安排一只眼睛去看</li>
+<li>透视我们也称为视距：视距就是人的眼睛到屏幕的距离</li>
+<li>距离视觉点越近的在电脑平面成像越大，越远成像越小</li>
+<li>透视的单位是像素</li>
+</ul>
+<p>==透视写在被观察元素的父盒子上面的==</p>
+<p><img src="https://img-blog.csdnimg.cn/07b834ed67b14d038613fdb993b161e3.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>d：就是视距，视距就是一个距离人的眼睛到屏幕的距离。</p>
+<p>z：就是 z轴，物体距离屏幕的距离，z轴越大（正值） 我们看到的物体就越大</p>
+<h3 id="-">透视的作用</h3>
+<p>有了透视，就能看到translateZ 引起的变化了</p>
+<ul>
+<li>translateZ：近大远小</li>
+<li>translateZ：往外是正值</li>
+<li>translateZ：往里是负值</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/fc804561fd5d4f6f892404c3df05dde6.gif#pic_center" alt="img"></p>
+<h2 id="4-3d-rotate3d">4、3D旋转rotate3d</h2>
+<p>3D旋转：3D旋转指可以让元素在三维平面内沿着 x轴，y轴，z轴或者自定义轴进行旋转。</p>
+<ul>
+<li>transform: rotateX(45deg) ：沿着X轴正方向旋转45度</li>
+<li>transform: rotateY(45deg) ：沿着Y轴正方向旋转45度</li>
+<li>transform: rotateZ(45deg) ：沿着Z轴正方向旋转45度</li>
+<li>transform: rotate3d(x,y,z,deg) ：沿着自定义轴旋转 deg为角度(了解即可)</li>
+</ul>
+<p>xyz是表示旋转轴的矢量，是标示你是否希望沿着该轴旋转，最后一个标示旋转的角度。</p>
+<pre><code class="lang-css">/*沿着X轴旋转45deg*/
+transform: rotate3d(1,0,0,45deg) 
+/*沿着对角线旋转45deg*/
+transform: rotate3d(1,1,0,45deg) 
+</code></pre>
+<p><strong>左手准则</strong></p>
+<p>translateX</p>
+<ul>
+<li>左手的手拇指指向 x轴的正方向</li>
+<li>其余手指的弯曲方向就是该元素沿着x轴旋转的方向</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/6eccd83b5b2e48adbeadb673c96ed0fc.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>translateY</p>
+<ul>
+<li>左手的手拇指指向 y轴的正方向</li>
+<li>其余手指的弯曲方向就是该元素沿着y轴旋转的方向（正值）</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/70b7feb515b24793a832060719ed33d6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA55Sf5ZG95piv5pyJ5YWJ55qE,size_16,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<p>translateZ</p>
+<ul>
+<li>旋转模式和2D相类似</li>
+</ul>
+<h2 id="5-3d-transform-style">5、3D呈现transform-style</h2>
+<ol>
+<li>控制子元素是否开启三维立体环境</li>
+<li><code>transform-style: flat</code> 子元素不开启3d立体空间 默认的</li>
+<li><code>transform-style: preserve-3d</code> 子元素开启立体空间</li>
+<li><strong>代码写给父级</strong>，但是影响的是子盒子</li>
+<li>这个属性很重要</li>
+</ol>
+<h1 id="-web">十一、移动端web</h1>
+<p>国内的 UC 和 QQ，百度等手机浏览器都是根据 Webkit 修改过来的内核，国内尚无自主研发的内核。</p>
+<blockquote>
+<p>总结：兼容移动端主流浏览器，处理 Webkit 内核浏览器即可。</p>
+</blockquote>
+<h2 id="1-">1、视口</h2>
+<ul>
+<li>视口（viewport）就是浏览器显示页面内容的屏幕区域。 视口可以分为<strong>布局视口、视觉视口和理想视口</strong></li>
+<li>我们只需要关注理想视口</li>
+</ul>
+<p>①布局视口layout viewport</p>
+<p>②视觉视口 visual viewport</p>
+<p>③理想视口 ideal viewport</p>
+<ul>
+<li>需要手动添写meta视口标签通知浏览器操作</li>
+<li>meta视口标签的主要目的：布局视口的宽度应该与理想视口的宽度一致，简单理解就是设备有多宽，我们布局的视口就多宽(乔布斯提出的哟)</li>
+</ul>
+<h2 id="2-meta-">2、meta视口标签</h2>
+<pre><code class="lang-css">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>宽度设置的是viewport宽度，可以设置device-width特殊值(宽度是设备宽度)</td>
+</tr>
+<tr>
+<td>initial-scale</td>
+<td>初始缩放比，大于0的数字</td>
+</tr>
+<tr>
+<td>maximum-scale</td>
+<td>最大缩放比，大于0的数字</td>
+</tr>
+<tr>
+<td>minimum-scale</td>
+<td>最小缩放比，大于0的数字</td>
+</tr>
+<tr>
+<td>user-scalable</td>
+<td>用户是否可以缩放，yes或no（1或0）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>标准的viewport设置</strong></p>
+<ul>
+<li>视口宽度和设备保持一致</li>
+<li>视口的默认缩放比例1.0</li>
+<li>不允许用户自行缩放</li>
+<li>最大允许的缩放比例1.0</li>
+<li>最小允许的缩放比例1.0</li>
+</ul>
+<h2 id="3-">3、二倍图</h2>
+<h3 id="3-1-">3.1物理像素和物理像素比</h3>
+<ul>
+<li><p>物理像素点指的是屏幕显示的最小颗粒，是物理真实存在的，我们开发时候的1px 不是一定等于1个物理像素的</p>
+</li>
+<li><p>PC端页面，1个px 等于1个物理像素的，但是移动端就不尽相同</p>
+</li>
+</ul>
+<p>我们准备的图片，比我们实际需要的大小大2倍，这种方式就是二倍图</p>
+<h3 id="3-2-">3.2、背景缩放</h3>
+<pre><code class="lang-css">background-size: 背景图片宽度 背景图片高度;
+</code></pre>
+<ul>
+<li>单位： 长度|百分比|cover|contain</li>
+<li>cover把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。</li>
+<li>contain把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域</li>
+</ul>
+<h2 id="4-">4、移动端开发选择</h2>
+<ol>
+<li>单独制作移动端页面(主流)，通常情况下，网址域名前面加 m(mobile) 可以打开移动端。<ul>
+<li>m.taobao.com</li>
+<li>m.jd.com</li>
+<li>m.suning.com</li>
+<li>通过判断设备，如果是移动设备打开，则跳到移动端页面。</li>
+</ul>
+</li>
+<li>响应式页面兼容移动端(其次)</li>
+</ol>
+<h2 id="5-css-normalize-css">5、css初始化 normalize.css</h2>
+<p>移动端 CSS 初始化推荐使用 normalize.css</p>
+<p>官网地址：<a href="http://necolas.github.io/normalize.css/">http://necolas.github.io/normalize.css/</a></p>
+<h2 id="6-css3-box-sizing">6、CSS3盒子模型 box-sizing</h2>
+<p>传统模式宽度计算：盒子的宽度 = CSS中设置的width + border + padding
+CSS3盒子模型： 盒子的宽度 = CSS中设置的宽度width，里面包含了 border 和 padding
+也就是说，我们的CSS3中的盒子模型， padding 和 border 不会撑大盒子了</p>
+<pre><code class="lang-css">/*CSS3盒子模型*/
+box-sizing: border-box;
+/*传统盒子模型*/
+box-sizing: content-box;
+</code></pre>
+<p>移动端可以全部CSS3 盒子模型
+PC端如果完全需要兼容，我们就用传统模式，如果不考虑兼容性，我们就选择 CSS3 盒子模型</p>
+<h2 id="7-">7、特殊样式</h2>
+<pre><code class="lang-css">/*CSS3盒子模型*/
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+
+/*点击高亮我们需要清除 设置为transparent 完成透明*/
+-webkit-tap-highlight-color: transparent;
+
+/*在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式*/
+-webkit-appearance: none;
+
+/*禁用长按页面时的弹出菜单*/
+img,a { 
+    -webkit-touch-callout: none;
+}
+</code></pre>
+<h1 id="-">十二、单独制作移动端页面</h1>
+<h2 id="1-">1、流式布局</h2>
+<ul>
+<li>流式布局，就是百分比布局，也称非固定像素布局。</li>
+<li>通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。</li>
+</ul>
+<h2 id="2-flex-">2、flex布局</h2>
+<table>
+<thead>
+<tr>
+<th>传统布局</th>
+<th>flex弹性布局</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>兼容性好</td>
+<td>操作方便，布局极为简单，移动端应用很广泛</td>
+</tr>
+<tr>
+<td>布局繁琐</td>
+<td>PC 端浏览器支持情况较差</td>
+</tr>
+<tr>
+<td>局限性，不能再移动端很好的布局</td>
+<td>IE 11或更低版本，不支持或仅部分支持</td>
+</tr>
+</tbody>
+</table>
+<p>建议：</p>
+<ol>
+<li>如果是PC端页面布局，我们还是传统布局。</li>
+<li>如果是移动端或者不考虑兼容性问题的PC端页面布局，我们还是使用flex弹性布局</li>
+</ol>
+<h3 id="2-1-flex-">2.1、flex布局原理</h3>
+<ul>
+<li>当我们为父盒子设为 flex 布局以后，子元素的 float、clear 和 vertical-align 属性将失效。</li>
+<li>伸缩布局 = 弹性布局 = 伸缩盒布局 = 弹性盒布局 =flex布局</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/d27de399dbd64e5db668e9d20c8b48bd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA55Sf5ZG95piv5pyJ5YWJ55qE,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="2-2-flex-">2.2、flex布局常见父项属性</h3>
+<ul>
+<li>flex-direction：设置主轴的方向</li>
+<li>justify-content：设置主轴上的子元素排列方式</li>
+<li>flex-wrap：设置子元素是否换行</li>
+<li>align-content：设置侧轴上的子元素的排列方式（多行）</li>
+<li>align-items：设置侧轴上的子元素排列方式（单行）</li>
+<li>flex-flow：复合属性，相当于同时设置了 flex-direction 和 flex-wrap</li>
+</ul>
+<h4 id="2-2-1-flex-direction-">2.2.1、flex-direction设置主轴方向</h4>
+<p>主轴和侧轴：在 flex 布局中，是分为主轴和侧轴两个方向，同样的叫法有：行和列、x轴和y轴</p>
+<ul>
+<li>默认主轴方向就是 x 轴方向，水平向右</li>
+<li><p>默认侧轴方向就是 y 轴方向，水平向下</p>
+</li>
+<li><p>flex-direction 属性决定主轴的方向（即项目的排列方向）</p>
+</li>
+<li>注意： 主轴和侧轴是会变化的，就看 flex-direction 设置谁为主轴，剩下的就是侧轴。而我们的子元素是跟着主轴来排列的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>row</strong></td>
+<td><strong>默认值从左到右</strong></td>
+</tr>
+<tr>
+<td>row-reverse</td>
+<td>从右到左</td>
+</tr>
+<tr>
+<td><strong>column</strong></td>
+<td><strong>从上到下</strong></td>
+</tr>
+<tr>
+<td>column-reverse</td>
+<td>从下到上</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-2-2-justify-content-">2.2.2、justify-content 设置主轴上的子元素排列方式</h4>
+<p>stify-content 属性定义了项目在主轴上的对齐方式
+注意： 使用这个属性之前一定要确定好主轴是哪个</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>flex-start</strong></td>
+<td><strong>默认值从头部开始，如果主轴是x轴，则从左到右</strong></td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>从尾部开始排列</td>
+</tr>
+<tr>
+<td><strong>center</strong></td>
+<td><strong>在主轴居中对齐(如果主轴是 x 轴则水平居中)</strong></td>
+</tr>
+<tr>
+<td><strong>space-around</strong></td>
+<td><strong>平分剩余空间</strong></td>
+</tr>
+<tr>
+<td><strong>space-between</strong></td>
+<td><strong>先两边贴边，再平分剩余空间🔥</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-2-3-flex-wrap-">2.2.3、flex-wrap 设置子元素是否换行</h4>
+<p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，flex布局中默认是不换行的。</p>
+<p>意思就是如果按照我们设置的盒子大小，一行只能装 3 个盒子，但是我们有 5 个盒子，那么 flex 布局默认会给我们塞上去，自动缩小盒子大小。</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nowrap</td>
+<td>默认值，不换行</td>
+</tr>
+<tr>
+<td><strong>wrap</strong></td>
+<td><strong>换行</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-2-4-align-items-">2.2.4、align-items 设置侧轴上的子元素排列方式(单行)</h4>
+<p>该属性是控制子项在侧轴（默认是y轴）上的排列方式 在子项为单项（<strong>单行</strong>）的时候使用</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>flex-start</strong></td>
+<td><strong>从上到下</strong></td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>从下到上</td>
+</tr>
+<tr>
+<td><strong>center</strong></td>
+<td><strong>挤在一起居中(垂直居中)</strong></td>
+</tr>
+<tr>
+<td><strong>stretch</strong></td>
+<td><strong>拉伸(默认值)</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-2-5-align-content-">2.2.5、align-content 设置侧轴上的子元素的排列方式(多行)</h4>
+<p>设置子项在侧轴上的排列方式 并且只能用于子项出现 <strong>换行</strong> 的情况（多行），在单行下是没有效果的。</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>flex-start</strong></td>
+<td><strong>默认值在侧轴的头部开始排列</strong></td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>在侧轴的尾部开始排列</td>
+</tr>
+<tr>
+<td><strong>center</strong></td>
+<td><strong>在侧轴中间显示</strong></td>
+</tr>
+<tr>
+<td><strong>space-around</strong></td>
+<td><strong>子项在侧轴平分剩余空间</strong></td>
+</tr>
+<tr>
+<td><strong>space-between</strong></td>
+<td><strong>子项在侧轴先分布在两头，再平分剩余空间</strong></td>
+</tr>
+<tr>
+<td><strong>stretch</strong></td>
+<td><strong>设置子项元素高度平分父元素高度</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-2-6-align-content-align-items-">2.2.6、align-content 和 align-items 区别</h4>
+<ul>
+<li>align-items 适用于单行情况下， 只有上对齐、下对齐、居中和 拉伸</li>
+<li>align-content 适应于换行（多行）的情况下（单行情况下无效）， 可以设置 上对齐、 下对齐、居中、拉伸以及平均分配剩余空间等属性值。</li>
+<li>总结就是单行找 align-items 多行找 align-content</li>
+</ul>
+<h4 id="2-2-7-flex-flow">2.2.7、flex-flow</h4>
+<p>flex-flow 属性是 flex-direction 和 flex-wrap 属性的复合属性</p>
+<pre><code class="lang-css">flex-flow: row wrap;
+</code></pre>
+<h3 id="2-3-flex-">2.3、flex布局子项常见属性</h3>
+<ul>
+<li>flex 子项目占的份数</li>
+<li>align-self 控制子项自己在侧轴的排列方式</li>
+<li>order属性定义子项的排列顺序（前后顺序）</li>
+</ul>
+<h4 id="2-3-1-flex-">2.3.1、flex属性</h4>
+<p>flex 属性定义子项目<strong>分配剩余空间</strong>，用flex来表示占多少份数。</p>
+<h4 id="2-3-2-align-self-">2.3.2、align-self 控制子项自己在侧轴上的排列方式</h4>
+<ul>
+<li>align-self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 align-items 属性。</li>
+<li>默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。</li>
+</ul>
+<h4 id="2-3-3-order-">2.3.3、order属性定义项目的排列顺序</h4>
+<p>数值越小，排列越靠前，默认为0。</p>
+<p>注意：和 z-index 不一样。</p>
+<h2 id="3-">3、背景颜色渐变</h2>
+<pre><code class="lang-css">/* 背景渐变必须添加浏览器私有前缀 */
+/* background: -webkit-linear-gradient(left, red, blue); */
+/* background: -webkit-linear-gradient(red, blue); */
+background: -webkit-linear-gradient(top left, red, blue);
+
+</code></pre>
+<h2 id="4-rem-">4、rem适配布局</h2>
+<p>流式布局和flex布局主要针对于宽度布局，rem解决高度自适应</p>
+<ul>
+<li>rem (root em)是一个相对单位，类似于em，em是父元素字体大小。</li>
+<li>不同的是rem的基准是相对于html元素的字体大小。<ul>
+<li>比如，根元素（html）设置font-size=12px; 非根元素设置width:2rem; 则换成px表示就是24px</li>
+<li>rem的优势：父元素文字大小可能不一致， 但是整个页面只有一个html，可以很好来控制整个页面的元素大小</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-">5、媒体查询</h2>
+<p>媒体查询（Media Query）是CSS3新语法。</p>
+<ul>
+<li>使用 @media 查询，可以针对不同的媒体类型定义不同的样式</li>
+<li>@media 可以针对不同的屏幕尺寸设置不同的样式</li>
+<li>当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面</li>
+<li>目前针对很多苹果手机、Android手机，平板等设备都用得到多媒体查询</li>
+</ul>
+<p><strong>语法</strong></p>
+<pre><code class="lang-css">@media mediatype and|not|only(media feature){
+    CSS-code
+}
+//例如
+ @media screen and (max-width: 800px) {
+     body {
+         background-color: pink;
+     }
+  }
+</code></pre>
+<ul>
+<li>用 @media 开头 注意@符号</li>
+<li>mediatype 媒体类型</li>
+<li>关键字 and not only</li>
+<li>media feature 媒体特性 必须有小括号包含</li>
+</ul>
+<h3 id="5-1-mediatype-">5.1、mediatype查询类型</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all</td>
+<td>用于所有设备</td>
+</tr>
+<tr>
+<td>print</td>
+<td>用于打印机和打印预览</td>
+</tr>
+<tr>
+<td><strong>screen</strong></td>
+<td><strong>用于电脑屏幕、平板电脑、智能手机等</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-2-">5.2、关键词</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>and</td>
+<td>可以将多个媒体特性连接到一起，相当于“且”的意思</td>
+</tr>
+<tr>
+<td>not</td>
+<td>排除某个媒体类型，相当于“非”的意思，可以省略</td>
+</tr>
+<tr>
+<td>only</td>
+<td>指定某个特定的媒体类型，可以省略</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-3-">5.3、媒体特性</h3>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>定义输出设备中页面可见区域的宽度</td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>定义输出设备中页面最小可见区域宽度</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>定义输出设备中页面最大可见区域宽度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-4-rem-">5.4、媒体查询+rem实现元素动态大小变化</h3>
+<ul>
+<li>rem单位是跟着html来走的，有了rem页面元素可以设置不同大小尺寸</li>
+<li>媒体查询可以根据不同设备宽度来修改样式</li>
+<li>媒体查询+rem 就可以实现不同设备宽度，实现页面元素大小的动态变化</li>
+</ul>
+<pre><code class="lang-css">  @media screen and (min-width: 320px) {
+            html {
+                font-size: 50px;
+            }
+        }
+
+   @media screen and (min-width: 640px) {
+            html {
+                font-size: 100px;
+            }
+        }
+
+    .top {
+            height: 1rem;
+            font-size: .5rem;
+            background-color: green;
+            color: #fff;
+            text-align: center;
+            line-height: 1rem;
+        }
+
+</code></pre>
+<h2 id="6-">6、引入资源</h2>
+<ul>
+<li>当样式比较繁多的时候，我们可以针对不同的媒体使用不同 stylesheets（样式表）。</li>
+<li>原理，就是直接在link中判断设备的尺寸，然后引用不同的css文件。</li>
+</ul>
+<p><strong>语法</strong></p>
+<pre><code class="lang-css">&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype and|not|only (media feature)&quot; href=&quot;mystylesheet.css&quot;&gt;
+</code></pre>
+<p><strong>示例</strong></p>
+<pre><code class="lang-css">&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype and|not|only (media feature)&quot; href=&quot;mystylesheet.css&quot;&gt;
+</code></pre>
+<h2 id="7-less-">7、less(重点)</h2>
+<p>Less （Leaner Style Sheets 的缩写） 是一门 CSS 扩展语言，也成为CSS预处理器。</p>
+<ul>
+<li>做为 CSS 的一种形式的扩展，它并没有减少 CSS 的功能，而是在现有的 CSS 语法上，为CSS加入程序式语言的特性。</li>
+<li>它在 CSS 的语法基础之上，引入了变量，Mixin（混入），运算以及函数等功能，大大简化了 CSS 的编写，并且降低了 CSS 的维护成本，就像它的名称所说的那样，Less 可以让我们用更少的代码做更多的事情</li>
+<li><p>Less中文网址： <a href="http://lesscss.cn/">http://lesscss.cn/</a></p>
+</li>
+<li><p>Less 是一门 CSS 预处理语言，它扩展了CSS的动态特性。</p>
+</li>
+</ul>
+<h3 id="7-1-less-">7.1、less安装</h3>
+<pre><code>npm install -g less     //如果使用vscode无需安装less
+</code></pre><p>查看版本</p>
+<pre><code>lessc -v
+</code></pre><h3 id="7-2-less-">7.2、less变量</h3>
+<pre><code class="lang-less">@变量名: 值;
+</code></pre>
+<p>变量命名规范</p>
+<ul>
+<li>必须有@为前缀</li>
+<li>不能包含特殊字符</li>
+<li>不能以数字开头</li>
+<li>大小写敏感</li>
+</ul>
+<p>例：</p>
+<pre><code class="lang-less">@color: pink;
+</code></pre>
+<p>变量是指没有固定的值，可以改变的。因为我们CSS中的一些颜色和数值等经常使用。</p>
+<h3 id="7-3-">7.3、编译</h3>
+<p>我们需要把我们的 less文件，编译生成为css文件，这样我们的html页面才能使用。</p>
+<p>我们可以在 vscode 安装 <code>Easy LESS</code> 插件来把 less 文件编译为 css。安装完毕插件，重新加载下 vscode。只要保存一下Less文件，会自动生成CSS文件。</p>
+<h3 id="7-4-less-">7.4、Less嵌套</h3>
+<pre><code class="lang-less">#header .logo {
+    width: 300px;
+}
+
+#header {
+    .logo{
+        width: 300px;
+    }
+}
+</code></pre>
+<p>如果遇见 （交集|伪类|伪元素选择器）</p>
+<ul>
+<li>内层选择器的前面没有 &amp; 符号，则它被解析为父选择器的后代</li>
+<li>如果有 &amp; 符号，它就被解析为父元素自身或父元素的伪类</li>
+</ul>
+<pre><code class="lang-less">
+a{
+    &amp;:hover{
+        color: red;
+    }
+}
+</code></pre>
+<h3 id="7-5-less-">7.5、less运算</h3>
+<p>任何数字、颜色或者变量都可以参与运算。就是Less提供了加（+）、减（-）、乘（*）、除（/）算术运算。</p>
+<pre><code class="lang-less">@width: 10px + 5;
+div {
+    border: @width solid red;
+}
+
+/* 生成的css */
+div {
+    border: 15px solid red;
+}
+
+/* Less甚至还可以这样 */
+width: (@width + 5) * 2;
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>乘号（*）和除号（/）的写法</li>
+<li>运算符中间左右有个空格隔开 1px + 5</li>
+<li>对于两个不同的单位的值之间的运算，运算结果的值取第一个值的单位</li>
+<li>如果两个值之间只有一个值有单位，则运算结果就取该单位</li>
+</ul>
+<h3 id="7-6-less-">7.6、导入less文件</h3>
+<pre><code class="lang-less">//在index.less导入common.less文件
+@import &quot;common&quot;
+</code></pre>
+<h2 id="8-rem-">8、rem适配方案</h2>
+<p>实际开发中适配方案：</p>
+<ol>
+<li>按照设计稿与设备宽度的比例，动态计算并设置 html 根标签的 font-size 大小；（媒体查询）</li>
+<li>CSS 中，设计稿元素的宽、高、相对位置等取值，按照同等比例换算为 rem 为单位的值；</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/a0b6ea5dab89442096a4d3595c121dc7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA55Sf5ZG95piv5pyJ5YWJ55qE,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="img"></p>
+<h3 id="8-1-1">8.1、技术方案1</h3>
+<p>rem + 媒体查询 + less 技术</p>
+<p><img src="https://img-blog.csdnimg.cn/2f0494ce7c554a6985ac4f0d0db421e4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA55Sf5ZG95piv5pyJ5YWJ55qE,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="img"></p>
+<p>一般情况下，我们以一套或两套效果图适应大部分的屏幕，放弃极端屏或对其优雅降级，牺牲一些效果。现在基本以750为准。</p>
+<blockquote>
+<p>动态设置 html 标签 font-size 大小</p>
+</blockquote>
+<ul>
+<li>假设设计稿是750px</li>
+<li>假设我们把整个屏幕划分为15等份（划分标准不一可以是20份也可以是10等份）</li>
+<li>每一份作为html字体大小，这里就是50px</li>
+<li>那么在320px设备的时候，字体大小为320/15 就是 21.33px</li>
+<li>用我们页面元素的大小 除以不同的 html 字体大小会发现他们比例还是相同的</li>
+<li>比如我们以 750为标准设计稿</li>
+<li>一个100<em>100像素的页面元素 在 750屏幕下， 就是 100 / 50 转换为rem 是 2rem </em> 2 rem 比例是 1比1</li>
+<li>320屏幕下， html 字体大小为 21.33 则 2rem = 42.66px 此时宽和高都是 42.66 但是 宽和高的比例还是 1比1</li>
+<li>但是已经能实现不同屏幕下 页面元素盒子等比例缩放的效果</li>
+</ul>
+<p><strong>元素的取值公式</strong></p>
+<ol>
+<li>最后的公式： 页面元素的rem值 = 页面元素值（px） / （屏幕宽度 / 划分的份数）</li>
+<li>屏幕宽度/划分的份数 就是 html font-size 的大小</li>
+<li>或者： 页面元素的rem值 = 页面元素值（px） / html font-size 字体大小</li>
+</ol>
+<p><strong>body的设置代码</strong></p>
+<pre><code class="lang-ss">body {
+    min-width: 320px;
+    /* 因为划分十五等分 */
+    width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background-color: #f2f2f2;
+}
+</code></pre>
+<h3 id="8-2-2">8.2、技术方案2</h3>
+<p>设计图：本设计图采用750px设计尺寸</p>
+<p>它的原理是将当前设备<strong>十等分</strong>，但是在不同设备下，比例还是一样的。</p>
+<p>github地址：<a href="https://github.com/amfe/lib-flexible">https://github.com/amfe/lib-flexible</a></p>
+<p><strong>body的设置代码</strong></p>
+<pre><code class="lang-css">body {
+    min-width: 320px;
+    max-width: 750px;
+    /* 因为划分十等分 */
+    width: 10rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background-color: #f2f2f2;
+}
+</code></pre>
+<h4 id="8-2-1-vscode-cssrem">8.2.1、vscode插件cssrem</h4>
+<p>自动将px转化为rem</p>
+<p>修改默认rem的html字体大小</p>
+<p><img src="C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230207122218600.png" alt="image-20230207122218600"></p>
+<h4 id="8-2-2-flexible-html-">8.2.2、修改flexible默认的html字体大小</h4>
+<pre><code class="lang-css">@media screen and (min-width: 750px) {
+      html {
+          font-size: 75px!important;
+      }
+}
+</code></pre>
+<h1 id="-web">十三、响应式开发移动web</h1>
+<h2 id="1-">1、原理</h2>
+<p>响应式开发原理：就是使用媒体查询针对不同宽度的设备来进行布局和样式的设置，从而适配不同的设备</p>
+<table>
+<thead>
+<tr>
+<th>设备划分</th>
+<th>尺寸区间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>超小屏幕（手机）</td>
+<td>&lt;768px</td>
+</tr>
+<tr>
+<td>小屏设备（平板）</td>
+<td>&gt;= 768px ~ &lt; 992px</td>
+</tr>
+<tr>
+<td>中等屏幕（桌面显示器）</td>
+<td>&gt;= 992px ~ &lt; 1200px</td>
+</tr>
+<tr>
+<td>宽屏屏幕（大桌面显示器）</td>
+<td>&gt;= 1200px</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-">2、响应式布局容器</h2>
+<p>响应式开发需要一个父级容器，来配合子元素实现变化效果。</p>
+<p>原理就是在不同屏幕下，通过媒体查询，来改变这个布局容器的大小，在改变里面子元素的排列方式和大小，从而实现在不同屏幕下，看到不同的页面布局和样式变化。</p>
+<p><strong>平时响应式尺寸划分大小</strong></p>
+<ul>
+<li>超小屏幕：设置宽度为100%</li>
+<li>小屏幕：设置宽度为750px</li>
+<li>中等屏幕：设置宽度为970px</li>
+<li>大屏幕：设置宽度为1170px</li>
+</ul>
+<h2 id="3-bootstrap-">3、bootstrap前端开发框架</h2>
+<ul>
+<li>中国官网：<a href="http://www.bootcss.com/">http://www.bootcss.com/</a></li>
+<li>官网：<a href="http://getbootstrap.com/">http://getbootstrap.com/</a></li>
+<li>推荐使用：<a href="http://bootstrap.css88.com/">http://bootstrap.css88.com/</a></li>
+</ul>
+<h3 id="3-1-bootstrap-">3.1、Bootstrap使用</h3>
+<p>使用四部曲：1.创建文件夹  2.创建HTML骨架结构   3.引入相关的样式   4.书写内容</p>
+<p>​    1. 创建文件夹</p>
+<p><img src="C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230207161523963.png" alt="image-20230207161523963"></p>
+<ol start="2">
+<li>创建HTML骨架结构</li>
+</ol>
+<p><img src="C:\Users\lsy\AppData\Roaming\Typora\typora-user-images\image-20230207162120444.png" alt="image-20230207162120444"></p>
+<ol start="3">
+<li>引入相关的样式</li>
+</ol>
+<pre><code class="lang-css">    &lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrap/css/bootstrap.min.css&quot;&gt;
+</code></pre>
+<ol start="4">
+<li>书写内容<ul>
+<li>修改Bootstrap原来的样式，注意权重问题</li>
+<li>学好Bootstrap关键在于它定义了哪些样式，以及这些样式能实现怎么样的效果</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-2-">3.2、布局容器</h3>
+<p>Bootstrap预先定义好了布局容器</p>
+<h4 id="1-container-">1.container类</h4>
+<ul>
+<li>超小屏幕：设置宽度为100%</li>
+<li>小屏幕：设置宽度为750px</li>
+<li>中等屏幕：设置宽度为970px</li>
+<li>大屏幕：设置宽度为1170px</li>
+</ul>
+<h4 id="2-container-fluid-">2.container-fluid类</h4>
+<ul>
+<li>流式布局容器 百分之百宽度</li>
+<li>占据全部视口（viewport）的容器</li>
+<li>适合于单独做移动端开发</li>
+</ul>
+<h3 id="3-3-bootstrap-">3.3、Bootstrap栅格系统</h3>
+<p>Bootstrap提供一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为12列。</p>
+<p>Bootstrap里面container宽度是固定的，但是不同屏幕下，container的宽度不同，我们再把container划分为12等分</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">超小屏幕 手机 (&lt;768px)</th>
+<th style="text-align:left">小屏幕 平板 (≥768px)</th>
+<th style="text-align:left">中等屏幕 桌面显示器 (≥992px)</th>
+<th>大屏幕 大桌面显示器 (≥1200px)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">栅格系统行为</td>
+<td style="text-align:left">总是水平排列</td>
+<td style="text-align:left">开始是堆叠在一起的，当大于这些阈值时将变为水平排列C</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>.container</code> 最大宽度</td>
+<td style="text-align:left">None （自动）</td>
+<td style="text-align:left">750px</td>
+<td style="text-align:left">970px</td>
+<td>1170px</td>
+</tr>
+<tr>
+<td style="text-align:left">类前缀</td>
+<td style="text-align:left"><code>.col-xs-</code></td>
+<td style="text-align:left"><code>.col-sm-</code></td>
+<td style="text-align:left"><code>.col-md-</code></td>
+<td><code>.col-lg-</code></td>
+</tr>
+<tr>
+<td style="text-align:left">列（column）数</td>
+<td style="text-align:left">12</td>
+<td style="text-align:left">12</td>
+<td style="text-align:left">12</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>可以给一个列指定多个设备的列名，以划分不同的份数，例如class=&quot;col-md-4 col-lg-2&quot;</p>
+</li>
+<li><p>列大于12，则最后一个元素另起一行，小于12则会留白</p>
+</li>
+</ul>
+<h4 id="3-3-1-">3.3.1、列嵌套</h4>
+<pre><code class="lang-html"> &lt;div class=&quot;container&quot;&gt;
+       &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-4&quot;&gt;
+                我们列嵌套最好加一个行row，这样可以取消父元素的padding值，而且高度自动和父级一样高
+                &lt;div class=&quot;row&quot;&gt;
+                    &lt;div class=&quot;col-md-6&quot;&gt;a&lt;/div&gt;
+                    &lt;div class=&quot;col-md-6&quot;&gt;b&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-4&quot;&gt;2&lt;/div&gt;
+            &lt;div class=&quot;col-md-4&quot;&gt;3&lt;/div&gt;
+       &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+<h4 id="3-3-2-">3.3.2、列偏移</h4>
+<pre><code class="lang-html">&lt;div class=&quot;container&quot;&gt;
+       &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-4&quot;&gt;左侧&lt;/div&gt;
+            &lt;div class=&quot;col-md-4 col-md-offset-4&quot;&gt;右侧&lt;/div&gt;
+       &lt;/div&gt;
+        //如果只有一个盒子，那么偏移 = 12 -8 /2
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-8 col-md-offset-2&quot;&gt;右侧&lt;/div&gt;
+       &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="3-3-3-">3.3.3、列排序</h4>
+<p>通过.col-md-push-<em> 和.col-md-pull- </em>类就很容易的改变列的顺序。</p>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-4&quot; colmd-push-8&gt;左侧&lt;/div&gt;
+            &lt;div class=&quot;col-md-8 col-md-pull-4&quot;&gt;右侧&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="3-3-4-">3.3.4、响应式工具</h4>
+<p>利用媒体查询，针对不同设备显示与隐藏页面内容</p>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>超小屏</th>
+<th>小屏</th>
+<th>中屏</th>
+<th>大屏</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.hidden-xs</td>
+<td>隐藏</td>
+<td>显示</td>
+<td>显示</td>
+<td>显示</td>
+</tr>
+<tr>
+<td>.hidden-sm</td>
+<td>显示</td>
+<td>隐藏</td>
+<td>显示</td>
+<td>显示</td>
+</tr>
+<tr>
+<td>.hidden-md</td>
+<td>显示</td>
+<td>显示</td>
+<td>隐藏</td>
+<td>显示</td>
+</tr>
+<tr>
+<td>.hidden-lg</td>
+<td>显示</td>
+<td>显示</td>
+<td>显示</td>
+<td>隐藏</td>
+</tr>
+</tbody>
+</table>
+<p>与之相反的是，==visivle-xs  visivle-sm   visivle-md  visivle-lg== 是显示某个页面的内容</p>
+<h1 id="-vw-vh">十四、vw和vh</h1>
+<h2 id="1-vw-vh">1、vw和vh</h2>
+<ul>
+<li>vw，vh是一个相对单位（类似于em和rem）</li>
+</ul>
+<p>vw: viewport width(视口宽度单位)</p>
+<p>vh: viewport height(视口长度单位)</p>
+<ul>
+<li>相对视口单位的尺寸计算结果：</li>
+</ul>
+<p>1vw=1/100视口宽度</p>
+<p>1vh=1/100视口高度</p>
+<p>例如：当前屏幕视口是375px，1vw就是3.75px</p>
+<p><strong>注意事项</strong></p>
+<p>==和百分比有区别，百分比是相对父元素来说的，而vw和vh总是针对于当前视口来说的==</p>
+<h2 id="2-">2、使用</h2>
+<p>设计稿视口宽度375px</p>
+<ol>
+<li>1vw是多少像素        375px/100=3.75px</li>
+<li>目标是多少像素？     50px*50px</li>
+<li>那么50*50是多少个vw      50/3.75=13.3333vw</li>
+</ol>
+<h1 id="-css-">十五、css代码规范</h1>
+<ol>
+<li>类名语义化，尽量简短，必须以字母开头命名，且全部字母为小写，单词之间统一使用下划线&quot;_&quot;连接</li>
+<li>类名嵌套层次尽量不超过三层</li>
+<li>尽量避免直接使用元素选择器</li>
+<li><p>属性书写顺序</p>
+<ul>
+<li>布局定位属性：display / position / float / clear / visibility / overflow</li>
+<li>尺寸属性：width / height / margin / padding / border / background</li>
+<li>文本属性：color / font / text-decoration / text-align / vertical-align</li>
+<li>其他属性（css3）:content / cursor / border-radius / box-shadow / text-shadow</li>
+</ul>
+</li>
+<li><p>避免使用id选择器</p>
+</li>
+<li>避免使用通配符和!important</li>
+</ol>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
